@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "madame-46a72"
+  },
+  "targets": {
+    "madame-46a72": {
+      "hosting": {
+        "Madame": [
+          "madame-46a72"
+        ]
+      }
+    }
   }
 }
