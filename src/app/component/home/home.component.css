@@ -16,7 +16,6 @@ body {
 .nav-bar {
     float: right;
     border: 1px solid none;
-    /* width: 888px; */
     max-width: max-content;
 }
 
@@ -64,7 +63,7 @@ body {
 
 @media only screen and (min-height: 800px) {
     .motto {
-        min-height: 100vh;
+        min-height: 88.3vh;
     }
 }
 
