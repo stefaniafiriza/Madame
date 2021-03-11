@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css?family=Muli');
+
+.input-icons i { 
+    position: absolute;
+} 
+  
+.input-icons { 
+    width: 100%; 
+    margin-bottom: 10px;
+} 
+  
+.icon { 
+    padding: 10px; 
+    padding-left: 5px;
+    color: rgb(0, 0, 0); 
+    min-width: 50px; 
+    text-align: center;
+}
+
+.reg-modal{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0 , 0 , 0.7);
+    background-image: url(../../../assets/image/foodd.jpg);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Muli', sans-serif;
+}
+
+.modal-content{
+    width: 650px;
+    height: 490px;
+    background-color: white;
+    opacity: 1;
+    border-radius: 50px;
+    text-align: center;
+    padding: 15px;
+    position: relative;
+    text-align: center;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25);
+    box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25);
+}
+
+.modal-content,.sign-in:hover{
+    -webkit-box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
+    box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
+}
+
+.log-reg{
+    width: 50%;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    text-align: center;
+    border-radius: 8px;
+    border: 1px solid;
+}
+
+.log-reg,.sign-up:focus{
+    outline: none;
+}
+
+.modal-content form , a{
+    text-decoration: none;
+    align-items: center;
+    color: black;
+    cursor: pointer;
+    font-family: 'Muli', sans-serif;
+}
+
+.sign-up{
+    border-radius: 8px; 
+    cursor: pointer; 
+    font-weight: bold; 
+    margin-top: 5px; 
+    border: 1px solid;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 25px;
+    padding-right: 25px;
+    background-color: white;
+    font-family: 'Muli', sans-serif;
+}
+
+.profile-image{
+    height: 100%;
+    width: 20%;
+    border-radius: 50%;
+}
+
+.hoverable{
+    position: relative;
+    display: block;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.hoverable .hover-text{
+    position: absolute;
+    display: none;
+    top: 50%;
+    left:  50%;
+    transform: translate(-50%,-50%);   
+    z-index: 2;
+}
+
+.hoverable .background{
+    position: absolute;
+    display: none;
+    top: 0;
+    left:  0;
+    bottom: 0;
+    right: 0;
+    background-color:rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.hoverable:hover .hover-text{
+    display: block;
+}
+
+.hoverable:hover .background{
+    display: block;
+}
+
+#fileInput{
+    display: none;
+}
+
+.has_a_cont a{
+    font-weight: bold;
+}
