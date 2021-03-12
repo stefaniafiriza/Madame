@@ -13,33 +13,6 @@ body {
     width: 100%;
 }
 
-.nav-bar {
-    float: right;
-    border: 1px solid none;
-    max-width: max-content;
-}
-
-.nav-bar ul li {
-    float: left;
-    text-align: center;
-    margin: 10px, auto;
-    width: 111px;
-}
-
-.nav-bar ul li a {
-    text-decoration: none;
-    color: darkgray;
-}
-
-.nav-bar ul li:hover {
-    background-color: green;
-}
-
-.nav-bar ul li a:hover {
-    color: while;
-    text-shadow: black;
-}
-
 .motto {
     background-color: black;
     opacity: 0.9;

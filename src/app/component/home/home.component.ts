@@ -4,13 +4,13 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['../../nav.css','./home.component.css']
 })
 export class HomeComponent implements OnInit {
 
   constructor(
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
   }
@@ -21,6 +21,9 @@ export class HomeComponent implements OnInit {
 
   sendLogin () {
     this.router.navigate(['/login']);
+  }
+  sendTeam() {
+    this.router.navigate(['../team']);
   }
 
 }

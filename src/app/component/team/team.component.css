@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css?family=Muli');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Muli', sans-serif;
+    color: white;
+    background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65),rgba(0,0,0,0.38),rgba(0,0,0,0)),
+    url(../../../assets/image/foodd.jpg)no-repeat center center fixed;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -moz-background-size: cover;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.moto{
+    margin: auto;
+    width:50%;
+    padding: 10px;
+    margin-bottom: 150px;
+}
+
+.moto h1{
+    color: while;
+    font-family: 'Muli', sans-serif;
+    padding: 100px;
+    width: 1000px;
+    height: 200px;
+    text-align: center;   
+}
+.staff {
+    margin: auto;
+    width:50%;
+    text-align: center;
+}
+.staff li{
+    display: inline-block;
+    padding: 10px;
+}

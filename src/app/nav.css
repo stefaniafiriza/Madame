@@ -1,0 +1,29 @@
+
+.nav-bar {
+    float: right;
+    border: 1px solid none;
+    /* width: 888px; */
+    max-width: max-content;
+}
+
+.nav-bar ul li {
+    cursor: pointer;
+    float: left;
+    text-align: center;
+    margin: 10px, auto;
+    width: 111px;
+}
+
+.nav-bar ul li a {
+    text-decoration: none;
+    color: darkgray;
+}
+
+.nav-bar ul li:hover {
+    background-color: rgb(66, 0, 128);
+}
+
+.nav-bar ul li a:hover {
+    color: while;
+    text-shadow: black;
+}

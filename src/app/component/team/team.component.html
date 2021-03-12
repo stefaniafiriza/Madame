@@ -1,0 +1,31 @@
+<body>
+    <div class="nav-bar">
+        <ul type="none">
+            <li><a (click)="sendHome()">Home</a></li>
+            <li><a><i class='fa fa-user-circle'></i>Profile</a></li>
+            <li><a>Online order</a></li>
+            <li><a>Daily menu</a></li>
+            <li><a>Contact us</a></li>
+            <li><a>Sign in</a></li>
+            <li><a>Sign up</a></li>
+            <li><a>Login</a></li>
+        </ul>
+    </div>
+
+    <div class="moto">
+        <h1>Get to know our personal staff!</h1>
+    </div>
+
+
+    <div class="staff">
+
+        <ul >
+            <li  *ngFor="let staff of teamList">
+              <personal-staff [staff]=staff></personal-staff>
+            </li>
+          </ul>
+        
+
+    </div>
+   
+</body>
