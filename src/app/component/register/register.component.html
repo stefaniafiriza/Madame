@@ -1,9 +1,15 @@
 <div class="reg-modal">
     <div class="modal-content">
-        <form>
+        <form (ngSubmit)="registerUser()">
+
+            <div class="row" *ngIf="error">
+                <div class="col-12 alert alert-danger">
+                  {{ error?.message }}
+                </div>
+            </div>
 
             <label class="hoverable" for="fileInput">
-                <img src="../../../assets/image/user-profile.png" class="profile-image">
+                <img src="../../../assets/image/user-profile.png" class="profile-image" [(ngModel)]="user.photo">
                 <div class="hover-text">Choose file</div>
                 <div class="background"></div>
             </label>
@@ -12,37 +18,37 @@
 
             <div class="input-icons">
                 <i class="fa fa-user icon"></i>
-                <input class="log-reg" type="text" placeholder="Name" name="name" required>
+                <input class="log-reg" type="text" placeholder="Name" name="name" [(ngModel)]="user.Name" required>
             </div>
 
             <div class="input-icons">
                 <i class="fa fa-envelope icon"></i>
-                <input class="log-reg" type="email" placeholder="E-mail" name="email" required>
+                <input class="log-reg" type="email" placeholder="E-mail" name="email" [(ngModel)]="user.email" required>
             </div>
 
             <div class="input-icons">
                 <i class="fa fa-phone icon"></i>
-                <input class="log-reg" type="text" placeholder="Your number" name="number" required>
+                <input class="log-reg" type="text" placeholder="Your number" name="number" [(ngModel)]="user.phone" required>
             </div>
 
             <div class="input-icons">
                 <i class="fa fa-home icon"></i>
-                <input class="log-reg" type="text" placeholder="Address" name="address" required>
+                <input class="log-reg" type="text" placeholder="Address" name="address" [(ngModel)]="user.address" required>
             </div>
 
             <div class="input-icons">
                 <i class="fa fa-key icon"></i>
-                <input class="log-reg" type="password" placeholder="Password" name="password"
+                <input class="log-reg" type="password" placeholder="Password" name="password" [(ngModel)]="user.password"
                     autocomplete="new-password" required>
             </div>
 
             <div class="input-icons">
                 <i class="fa fa-key icon"></i>
-                <input class="log-reg" type="password" placeholder="Confirm password" name="connfirm-password"
+                <input class="log-reg" type="password" placeholder="Confirm password" name="connfirmpassword" [(ngModel)]="confirmPassword"
                     autocomplete="new-password" required>
             </div>
 
-            <input type="submit" value="Sign up" name="register-btn" class="sign-up">
+            <input type="submit" value="Sign up" name="register-btn" class="sign-up"  [disabled] = "user.password != confirmPassword">
             
             <div class="has_a_cont">
                 Do you have an account?
