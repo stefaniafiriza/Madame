@@ -23,4 +23,11 @@ export class TeamComponent implements OnInit {
   sendHome(){
     this.router.navigate(['../home']);
   }
+  sendRegister () {
+    this.router.navigate(['/register']);
+  }
+
+  sendLogin () {
+    this.router.navigate(['/login']);
+  }
 }
