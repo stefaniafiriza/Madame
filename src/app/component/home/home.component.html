@@ -1,14 +1,14 @@
 <body>
     <div class="nav-bar">
         <ul type="none">
-            <li><a><i class='fa fa-user-circle'></i>Profile</a></li>
-            <li><a>Online order</a></li>
+            <li><a *ngIf="hideBarLink"><i class='fa fa-user-circle'></i>Profile</a></li>
+            <li><a *ngIf="hideBarLink">Online order</a></li>
             <li><a>Daily menu</a></li>
             <li><a (click)="sendTeam()">Team</a></li>
             <li><a>Contact us</a></li>
-            <li><a (click) = "sendLogin()">Sign in</a></li>
-            <li><a (click) = "sendRegister()">Sign up</a></li>
-            <li><a>Logout</a></li>
+            <li><a  *ngIf="!hideBarLink" (click) = "sendLogin()">Sign in</a></li>
+            <li><a *ngIf="!hideBarLink" (click) = "sendRegister()">Sign up</a></li>
+            <li><a *ngIf="hideBarLink" (click) = "logout()">Logout</a></li>
         </ul>
     </div>
 

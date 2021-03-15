@@ -17,6 +17,7 @@ export class AuthService {
 
   users: AngularFirestoreCollection<User>;
   u: User;
+  isLogged: boolean = false;
 
   private eventAuthError = new BehaviorSubject<string>('');
   eventAuthError$ = this.eventAuthError.asObservable();
@@ -40,6 +41,7 @@ export class AuthService {
           displayName: user.Name
         });
         this.insertUserData(userCredential);
+        this.router.navigate(['']);
       })
       .catch(error => {
         this.eventAuthError.next(error);
@@ -56,4 +58,29 @@ export class AuthService {
       photo: this.newUser.photo
     });
   }
+
+  login(email: string, password: string) {
+    this.angularFireAuth.signInWithEmailAndPassword(email, password)
+      .catch(error => {
+        this.eventAuthError.next(error);
+      })
+      .then(userCredential => {
+        if(userCredential) {
+          this.isLogged = true;
+          this.router.navigate(['/home']);
+         
+        }
+      });
+  }
+
+  logout() {
+    console.log("out");
+    return this.angularFireAuth.signOut()
+    .then( () => {
+      console.log("out");
+      this.router.navigate(['']);
+      this.isLogged = false;
+    });
+  }
+
 }
