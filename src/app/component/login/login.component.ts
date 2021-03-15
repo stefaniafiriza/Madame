@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private auth: AuthService
-
+  ){}
 
   ngOnInit(): void {
     this.auth.eventAuthError$.subscribe( error => {

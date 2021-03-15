@@ -30,4 +30,7 @@ export class TeamComponent implements OnInit {
   sendLogin () {
     this.router.navigate(['/login']);
   }
+  sendFav(){
+    this.router.navigate(['/fav']);
+  }
 }

@@ -17,6 +17,9 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 
+import { FavouritesComponent } from './component/favourites/favourites.component';
+import { FavFoodComponent  } from './component/sablonFood/sablonFood.component';
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +27,9 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     RegisterComponent,
     LoginComponent,
     TeamComponent,
-    StaffComponent
+    StaffComponent,
+    FavouritesComponent,
+    FavFoodComponent
   ],
   imports: [
     FormsModule,
@@ -32,7 +37,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    AngularFireAuthModule // imports firebase/auth, only needed for auth features
   ],
   providers: [],
   bootstrap: [AppComponent]
