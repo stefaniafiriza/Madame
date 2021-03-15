@@ -1,19 +1,23 @@
 <div class="lg-modal">
     <div class="modal-content">
-        <form>
+        <form (ngSubmit)="login()">
 
+            <div class="row" *ngIf="error">
+                <div class="col-12 alert alert-danger">{{ error?.message }}</div>
+            </div>
 
             <img src="../../../assets/image/user-profile.png" class="profile-image">
 
 
             <div class="input-icons">
                 <i class="fa fa-envelope icon"></i>
-                <input class="log-reg" type="email" placeholder="E-mail" name="email" required>
+                <input class="log-reg" type="email" placeholder="E-mail" name="email" [(ngModel)]="email" required>
             </div>
 
             <div class="input-icons">
                 <i class="fa fa-key icon"></i>
-                <input class="log-reg" type="password" placeholder="Password" name="password" required>
+                <input class="log-reg" type="password" placeholder="Password" name="password" [(ngModel)]="password"
+                    required>
             </div>
 
             <div class="forgotPassword">
@@ -22,13 +26,19 @@
 
             <input class="sign-in" type="submit" value="Sign in" name="login-btn">
 
+            <div class="vl">
+                <span class="vl-innertext">or</span>
+            </div>
+
             <div class="connect">
                 <button type="button" class="gmailBtn">
-                    <i class="fa fa-google" aria-hidden="true" id="gmail"></i>
+                    <i class="fa fa-google fa-fw" aria-hidden="true" id="gmail"></i>
+                    Login with Google+
                 </button>
                 <button type="button" class="facebookBtn">
-                    <i class="fa fa-facebook-square" aria-hidden="true" id="facebook"></i>
-                    
+                    <i class="fa fa-facebook fa-fw" aria-hidden="true" id="facebook"></i>
+                    Login with Facebook
+
                 </button>
             </div>
 

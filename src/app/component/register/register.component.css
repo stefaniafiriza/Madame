@@ -52,7 +52,7 @@
     box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25);
 }
 
-.modal-content,.sign-in:hover{
+.modal-content,.sign-up:hover{
     -webkit-box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
     box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
 }
@@ -90,6 +90,14 @@
     padding-right: 25px;
     background-color: white;
     font-family: 'Muli', sans-serif;
+    opacity: 0.85;
+    display: inline-block;
+    font-size: 17px;
+    line-height: 20px;
+}
+
+.sign-up:hover {
+    opacity: 1;
 }
 
 .profile-image{
