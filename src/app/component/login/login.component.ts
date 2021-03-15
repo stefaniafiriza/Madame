@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
+
 import { AuthService } from '../../service/auth.service';
+
 
 @Component({
   selector: 'app-login',
@@ -9,6 +11,7 @@ import { AuthService } from '../../service/auth.service';
 })
 export class LoginComponent implements OnInit {
 
+
   email: string;
   password: string;
   error: any;
@@ -16,7 +19,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private auth: AuthService
-  ) { }
+
 
   ngOnInit(): void {
     this.auth.eventAuthError$.subscribe( error => {
@@ -30,5 +33,6 @@ export class LoginComponent implements OnInit {
 
   sendHome(){
     this.router.navigate(['']);
+
   }
 }

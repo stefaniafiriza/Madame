@@ -45,5 +45,6 @@ export class RegisterComponent implements OnInit {
 
   sendHome(){
     this.router.navigate(['']);
+
   }
 }
