@@ -33,6 +33,13 @@ export class AuthService {
     this.users = db.collection<User>('/Users');
   }
 
+  sendVerificationMail() {
+    return this.angularFireAuth.currentUser.then(u => u.sendEmailVerification())
+    .then(() => {
+      this.router.navigate(['/verify-email']);
+    })
+  }
+
   registerUser(user: User) {
     this.angularFireAuth.createUserWithEmailAndPassword(user.email, user.password)
       .then(userCredential => {
@@ -41,7 +48,10 @@ export class AuthService {
           displayName: user.Name
         });
         this.insertUserData(userCredential);
-        this.router.navigate(['']);
+        this.sendVerificationMail()
+        .then(() => {
+          this.router.navigate(['/verify-email'])
+        });
       })
       .catch(error => {
         this.eventAuthError.next(error);
@@ -66,9 +76,13 @@ export class AuthService {
       })
       .then(userCredential => {
         if(userCredential) {
-          this.isLogged = true;
-          this.router.navigate(['/home']);
-         
+          if(userCredential.user.emailVerified !== false) {
+            this.isLogged = true;
+            this.router.navigate(['/home']);
+          } else {
+            window.alert('Please validate your email address. Kindly check your inbox.');
+            this.router.navigate(['']);
+          }
         }
       });
   }

@@ -19,6 +19,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { FavouritesComponent } from './component/favourites/favourites.component';
 import { FavFoodComponent  } from './component/sablonFood/sablonFood.component';
+import { VerifyEmailComponent } from './component/verify-email/verify-email.component';
  
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { FavFoodComponent  } from './component/sablonFood/sablonFood.component';
     TeamComponent,
     StaffComponent,
     FavouritesComponent,
-    FavFoodComponent
+    FavFoodComponent,
+    VerifyEmailComponent
   ],
   imports: [
     FormsModule,
