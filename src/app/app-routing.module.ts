@@ -7,6 +7,7 @@ import { LoginComponent } from '../app/component/login/login.component';
 import { TeamComponent } from './component/team/team.component';
 import { FavouritesComponent } from './component/favourites/favourites.component';
 import { VerifyEmailComponent } from '../app/component/verify-email/verify-email.component';
+import { ForgotPasswordComponent } from '../app/component/forgot-password/forgot-password.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'team', component: TeamComponent },
   { path: 'fav', component: FavouritesComponent},
-  { path: 'verify-email', component:VerifyEmailComponent }
+  { path: 'verify-email', component: VerifyEmailComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent }
 ];
 
 @NgModule({

@@ -97,4 +97,13 @@ export class AuthService {
     });
   }
 
+  forgotPassword(passwordResetEmail) {
+    return this.angularFireAuth.sendPasswordResetEmail(passwordResetEmail)
+    .then(() => {
+      window.alert('Password reset email sent, check your inbox.');
+    }).catch((error) => {
+      this.eventAuthError.next(error);
+    })
+  }
+
 }

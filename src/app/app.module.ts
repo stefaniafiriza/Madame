@@ -20,6 +20,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FavouritesComponent } from './component/favourites/favourites.component';
 import { FavFoodComponent  } from './component/sablonFood/sablonFood.component';
 import { VerifyEmailComponent } from './component/verify-email/verify-email.component';
+import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
  
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { VerifyEmailComponent } from './component/verify-email/verify-email.comp
     StaffComponent,
     FavouritesComponent,
     FavFoodComponent,
-    VerifyEmailComponent
+    VerifyEmailComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     FormsModule,
