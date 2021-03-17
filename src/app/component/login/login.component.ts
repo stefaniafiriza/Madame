@@ -31,8 +31,12 @@ export class LoginComponent implements OnInit {
     this.auth.login(this.email, this.password);
   }
 
-  sendHome(){
+  sendHome() {
     this.router.navigate(['']);
 
+  }
+
+  sendForgotPassword() {
+    this.router.navigate(['/forgot-password']);
   }
 }
