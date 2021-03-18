@@ -9,9 +9,9 @@ import { Staff } from '../sablon/staff';
 })
 export class TeamComponent implements OnInit {
 
-  teamList : Staff[] = [ {name: "Chef A", link : "google.com", photo: "assets\\image\\a.png", description: "A very good chef", rating : 4},
-  {name: "Chef B", link : "google.com", photo: "assets\\image\\a.png", description: "A very good chef", rating : 5},
-  {name: "Chef B", link : "google.com", photo: "assets\\image\\a.png", description: "A very good chef", rating : 5}  ]
+  teamList : Staff[] = [ {name: "Chef Musty", link : "google.com", photo: "assets\\image\\chef1.png", description: "Specialist in Italian food.", rating : 4.90},
+  {name: "Chef Ivan", link : "google.com", photo: "assets\\image\\chef2.png", description: "Specialist in chinese food.", rating : 4.85},
+  {name: "Chef Betina", link : "google.com", photo: "assets\\image\\chef3.png", description: "Specialist in sea-food related recipes.", rating : 5}  ]
 
 
   constructor(

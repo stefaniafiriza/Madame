@@ -9,8 +9,9 @@ import { FavFood } from '../sablonFood/favFood';
 })
 export class FavouritesComponent implements OnInit {
 
-  productList : FavFood[] = [ {name:"Mint-chocolate cake",photo:"assets\\image\\mintcake.jpg",description: "A very sweet cake",rating: 5},
-  {name:"Burger",photo:"assets\\image\\burger.png",description: "A very tasty burger",rating: 5}]
+  productList : FavFood[] = [ {name:"Salad",photo:"assets\\image\\food6.png",description: "Extra fresh salad.",rating: 5},
+  {name:"Burger",photo:"assets\\image\\burger.png",description: "A very tasty burger",rating: 4.95},
+  {name:"Chicken",photo:"assets\\image\\food1.png",description: "Honey glazed chicken",rating: 4.8}]
 
   constructor(
     private router: Router,
