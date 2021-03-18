@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
+import { AuthService } from 'src/app/service/auth.service';
 import { Staff } from '../sablon/staff';
 @Component({
   selector: 'app-team',
@@ -14,7 +15,8 @@ export class TeamComponent implements OnInit {
 
 
   constructor(
-    private router: Router
+    private router: Router,
+    private auth: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -32,5 +34,15 @@ export class TeamComponent implements OnInit {
   }
   sendFav(){
     this.router.navigate(['/fav']);
+  }
+  sendReview(){
+    this.router.navigate(['./review']);
+  }
+ 
+  hideBarLink: boolean = false;
+  logged: boolean = this.auth.isLogged == false ? this.hideBarLink = false : this.hideBarLink = true;
+
+  logout() {
+    this.auth.logout();
   }
 }

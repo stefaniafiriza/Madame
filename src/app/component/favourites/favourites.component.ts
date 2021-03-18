@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
+import { AuthService } from 'src/app/service/auth.service';
 import { FavFood } from '../sablonFood/favFood';
 @Component({
   selector: 'app-favourites',
@@ -12,7 +13,8 @@ export class FavouritesComponent implements OnInit {
   {name:"Burger",photo:"assets\\image\\burger.png",description: "A very tasty burger",rating: 5}]
 
   constructor(
-    private router: Router
+    private router: Router,
+    private auth: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -27,5 +29,18 @@ export class FavouritesComponent implements OnInit {
 
   sendLogin () {
     this.router.navigate(['/login']);
+  }
+  sendTeam(){
+    this.router.navigate(['./team']);
+  }
+  sendReview(){
+    this.router.navigate(['./review']);
+  }
+
+  hideBarLink: boolean = false;
+  logged: boolean = this.auth.isLogged == false ? this.hideBarLink = false : this.hideBarLink = true;
+
+  logout() {
+    this.auth.logout();
   }
 }
