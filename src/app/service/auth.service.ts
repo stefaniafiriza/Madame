@@ -88,10 +88,8 @@ export class AuthService {
   }
 
   logout() {
-    console.log("out");
     return this.angularFireAuth.signOut()
     .then( () => {
-      console.log("out");
       this.router.navigate(['']);
       this.isLogged = false;
     });
@@ -104,6 +102,27 @@ export class AuthService {
     }).catch((error) => {
       this.eventAuthError.next(error);
     })
+  }
+
+  GoogleAuth() {
+    return this.authLogin(new auth.GoogleAuthProvider());
+  }
+
+  FacebookAuth() {
+    return this.authLogin(new auth.FacebookAuthProvider());
+  }  
+
+  authLogin(provider) {
+    return this.angularFireAuth.signInWithPopup(provider)
+      .then((userCredential) => {
+          this.ngZone.run(() => {
+            this.isLogged = true;
+            this.router.navigate(['/home']);
+          })
+          this.insertUserData(userCredential);
+      }).catch((error) => {
+          this.eventAuthError.next(error);
+      })
   }
 
 }

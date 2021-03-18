@@ -39,4 +39,13 @@ export class LoginComponent implements OnInit {
   sendForgotPassword() {
     this.router.navigate(['/forgot-password']);
   }
+
+  googleConnect() {
+    this.auth.GoogleAuth();
+  }
+
+  facebookConnect() {
+    this.auth.FacebookAuth();
+  }
+
 }
