@@ -44,4 +44,8 @@ export class HomeComponent implements OnInit {
     this.auth.logout();
   }
 
+  sendProfile () {
+    this.router.navigate(['/profile']);
+  }
+
 }
