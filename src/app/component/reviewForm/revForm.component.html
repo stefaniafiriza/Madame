@@ -1,0 +1,27 @@
+<body>
+<div class="rev-modal">
+
+    <div class="container">
+
+        <form action="review()">
+            
+            <div class="input-icons">
+                <i class="fa fa-user icon"></i>
+                <input class="log-reg" type="text" placeholder="Name" name="name" [(ngModel)]="user.Name" required>
+            </div>
+            
+            <div class="input-icons">
+                <i class="fa fa-envelope icon"></i>
+
+                <textarea class="log-reg" type="text" placeholder="Your review" name="review"  required></textarea>
+            </div>
+            
+            
+        <button class="submitButton" (click)="review()">Send</button>
+
+        </form>
+        
+        <button class="backButton" (click)="sendReview()">Back</button>
+    </div>
+</div>
+</body>

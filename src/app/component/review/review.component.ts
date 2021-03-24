@@ -1,22 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../service/auth.service';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['../../nav.css','./home.component.css']
+  selector: 'app-review',
+  templateUrl: './review.component.html',
+  styleUrls: ['../../nav.css','./review.component.css']
 })
-export class HomeComponent implements OnInit {
+export class ReviewComponent implements OnInit {
+
 
   constructor(
     private router: Router,
     private auth: AuthService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
   }
 
+  sendHome(){
+    this.router.navigate(['../home']);
+  }
   sendRegister () {
     this.router.navigate(['/register']);
   }
@@ -24,28 +28,21 @@ export class HomeComponent implements OnInit {
   sendLogin () {
     this.router.navigate(['/login']);
   }
-  
-  sendTeam() {
-    this.router.navigate(['../team']);
-  }
-
-  sendReview(){
-    this.router.navigate(['./review']);
-  }
-
   sendFav(){
-    this.router.navigate(['./fav']);
+    this.router.navigate(['/fav']);
+  }
+  sendTeam(){
+    this.router.navigate(['./team']);
   }
 
   hideBarLink: boolean = false;
   logged: boolean = this.auth.isLogged == false ? this.hideBarLink = false : this.hideBarLink = true;
-
+  
   logout() {
     this.auth.logout();
   }
 
-  sendProfile () {
-    this.router.navigate(['/profile']);
+  sendRev(){
+    this.router.navigate(['./rev']);
   }
-
 }

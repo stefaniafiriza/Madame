@@ -3,9 +3,10 @@
         <ul type="none">
             <li><a (click)="sendHome()">Home</a></li>
             <li><a><i class='fa fa-user-circle'></i>Profile</a></li>
-            <li><a (click)="sendLogin()">Sign in</a></li>
-            <li><a (click)="sendRegister()">Sign up</a></li>
+            <li><a *ngIf="!hideBarLink" (click)="sendLogin()">Sign in</a></li>
+            <li><a *ngIf="!hideBarLink" (click)="sendRegister()">Sign up</a></li>
             <li><a (click)="sendFav()">Favourites Food</a></li>
+            <li><a (click)="sendReview()">Reviews</a></li>
             
         </ul>
     </div>

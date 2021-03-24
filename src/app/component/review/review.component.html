@@ -5,24 +5,11 @@
             <li><a><i class='fa fa-user-circle'></i>Profile</a></li>
             <li><a *ngIf="!hideBarLink" (click)="sendLogin()">Sign in</a></li>
             <li><a *ngIf="!hideBarLink" (click)="sendRegister()">Sign up</a></li>
+            <li><a (click)="sendFav()">Favourites Food</a></li>
             <li><a (click)="sendTeam()">Team</a></li>
-            <li><a (click)="sendReview()">Reviews</a></li>
+            
         </ul>
     </div>
 
-    <div class="moto">
-        <h1>Don't know what to eat? We got you!</h1>
-    </div>
-
-    <div class="favFood">
-
-        <ul >
-            <li  *ngFor="let favFood of productList">
-              <fav-food [favFood]=favFood></fav-food>
-            </li>
-          </ul>
-        
-
-    </div>
-   
+    <button class="button" (click)="sendRev()" >Tell us your opinion!</button>
 </body>
