@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { database, firestore } from 'firebase';
 import { AuthService } from 'src/app/service/auth.service';
 import { Staff } from '../sablon/staff';
 @Component({
@@ -9,7 +11,7 @@ import { Staff } from '../sablon/staff';
 })
 export class TeamComponent implements OnInit {
 
-  teamList : Staff[] = [ {name: "Chef Musty", link : "google.com", photo: "assets\\image\\chef1.png", description: "Specialist in Italian food.", rating : 4.90},
+  teamList : Staff[] = [
   {name: "Chef Ivan", link : "google.com", photo: "assets\\image\\chef2.png", description: "Specialist in chinese food.", rating : 4.85},
   {name: "Chef Betina", link : "google.com", photo: "assets\\image\\chef3.png", description: "Specialist in sea-food related recipes.", rating : 5}  ]
 
@@ -17,9 +19,29 @@ export class TeamComponent implements OnInit {
   constructor(
     private router: Router,
     private auth: AuthService
-  ) { }
+  ) {  }
+
 
   ngOnInit(): void {
+    firestore().collection('site').doc('chefs').get().then( (snapshot) => {
+      this.snapshotToStaffArray(snapshot.data());
+    })
+  }
+
+  snapshotToStaffArray(snapshot: firestore.DocumentData){
+
+    Object.keys(snapshot).forEach((key)=>{
+      let value = snapshot[key];
+      this.teamList.push(
+        {
+          name: value.name,
+          link : value.link,
+          photo: value.photo,
+          description: value.description,
+          rating: value.rating
+        }
+      )
+    });
   }
 
   sendHome(){

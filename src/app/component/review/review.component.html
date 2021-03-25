@@ -1,3 +1,4 @@
+<!-- 
 <body>
     <div class="nav-bar">
         <ul type="none">
@@ -13,3 +14,29 @@
 
     <button class="button" (click)="sendRev()" >Tell us your opinion!</button>
 </body>
+ -->
+
+<body>
+    <div class="nav-bar">
+        <ul type="none">
+            <li><a (click)="sendHome()">Home</a></li>
+            <li><a><i class='fa fa-user-circle'></i>Profile</a></li>
+            <li><a *ngIf="!hideBarLink" (click)="sendLogin()">Sign in</a></li>
+            <li><a *ngIf="!hideBarLink" (click)="sendRegister()">Sign up</a></li>
+            <li><a (click)="sendFav()">Favourites Food</a></li>
+            <li><a (click)="sendTeam()">Team</a></li>
+            
+        </ul>
+    </div>
+
+
+<div class="tabcontent">
+  <p>{{ reviews[currentReview].nume }}</p>
+  <p>{{ reviews[currentReview].review }}</p>
+  <button (click)="nextReview()">Next</button>
+</div>
+
+<button class="button" (click)="sendRev()" >Tell us your opinion!</button>
+   
+</body>
+
