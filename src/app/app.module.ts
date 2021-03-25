@@ -22,6 +22,7 @@ import { FavFoodComponent  } from './component/sablonFood/sablonFood.component';
 import { VerifyEmailComponent } from './component/verify-email/verify-email.component';
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
 import { ProfileComponent } from './component/profile/profile.component';
+import { ReviewComponent } from './component/review/review.component'
 import { RevFormComponent } from './component/reviewForm/revForm.component';
  
 @NgModule({
@@ -37,6 +38,7 @@ import { RevFormComponent } from './component/reviewForm/revForm.component';
     VerifyEmailComponent,
     ForgotPasswordComponent,
     ProfileComponent,
+    ReviewComponent,
     RevFormComponent
   ],
   imports: [
