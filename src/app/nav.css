@@ -2,8 +2,7 @@
 .nav-bar {
     float: right;
     border: 1px solid none;
-    /* width: 888px; */
-    max-width: 666px;
+    max-width: 888px;
 }
 
 .nav-bar ul li {

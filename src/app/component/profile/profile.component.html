@@ -1,31 +1,31 @@
 <div class="card">
     <label class="hoverable" for="fileInput">
-      <img src ='../../../assets/image/user-profile.png' class="profile-image">
+      <img [src] ="url ? url : '../../../assets/image/user-profile.png'" class="profile-image">
       <div class="hover-text">Choose file</div>
       <div class="background"></div>
     </label>
-    <input id="fileInput" type='file' accept=".png,.jpg">
-    <button>delete</button>
+    <input id="fileInput" type='file' (change)="onSelectFile($event)" accept=".png,.jpg">
+    <button *ngIf="url" (click)="delete()">delete</button>
     
-    <h1>userName</h1>
-    <h3>emailUser</h3>
+    <h1>{{name}}</h1>
+    <h3>{{emailUser}}</h3>
     <h3 class="text">Edit your account</h3>
     <form>
       <div>
-        <input class="change" type="email" placeholder="New e-mail" name="email" required>
-        <button>Change e-mail</button>
+        <input class="change" type="email" placeholder="New e-mail" name="email" [(ngModel)]="email" required>
+        <button (click)="changeEmail()">Change e-mail</button>
       </div>
       
     </form>
     <form>
         <div>
-          <input class="change" type="password" placeholder="New password" name="password" required>
-          <button>Change password</button>
+          <input class="change" type="password" placeholder="New password" name="password" [(ngModel)]="newPassword" required>
+          <button (click)="changePassword()">Change password</button>
         </div>
         
       </form>
   </div>
   <div class="input-icons">
     <i class="fa fa-arrow-left icon"></i>
-    <button type="button" class="homeBtn">Home</button>
+    <button type="button" class="homeBtn" (click)="sendHome()">Home</button>
   </div>
