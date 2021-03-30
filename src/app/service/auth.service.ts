@@ -18,6 +18,8 @@ export class AuthService {
   users: AngularFirestoreCollection<User>;
   u: User;
   isLogged: boolean = false;
+  password: string;
+  photo: string;
 
   private eventAuthError = new BehaviorSubject<string>('');
   eventAuthError$ = this.eventAuthError.asObservable();
@@ -29,15 +31,15 @@ export class AuthService {
     private db: AngularFirestore,
     private router: Router,
     private ngZone: NgZone
-  ) { 
+  ) {
     this.users = db.collection<User>('/Users');
   }
 
   sendVerificationMail() {
     return this.angularFireAuth.currentUser.then(u => u.sendEmailVerification())
-    .then(() => {
-      this.router.navigate(['/verify-email']);
-    })
+      .then(() => {
+        this.router.navigate(['/verify-email']);
+      })
   }
 
   registerUser(user: User) {
@@ -49,9 +51,9 @@ export class AuthService {
         });
         this.insertUserData(userCredential);
         this.sendVerificationMail()
-        .then(() => {
-          this.router.navigate(['/verify-email'])
-        });
+          .then(() => {
+            this.router.navigate(['/verify-email'])
+          });
       })
       .catch(error => {
         this.eventAuthError.next(error);
@@ -65,7 +67,7 @@ export class AuthService {
       phone: this.newUser.phone,
       address: this.newUser.address,
       products: this.newUser.products,
-      photo: this.newUser.photo
+      photo: this.photo
     });
   }
 
@@ -75,9 +77,10 @@ export class AuthService {
         this.eventAuthError.next(error);
       })
       .then(userCredential => {
-        if(userCredential) {
-          if(userCredential.user.emailVerified !== false) {
+        if (userCredential) {
+          if (userCredential.user.emailVerified !== false) {
             this.isLogged = true;
+            this.password = password;
             this.router.navigate(['/home']);
           } else {
             window.alert('Please validate your email address. Kindly check your inbox.');
@@ -89,19 +92,19 @@ export class AuthService {
 
   logout() {
     return this.angularFireAuth.signOut()
-    .then( () => {
-      this.router.navigate(['']);
-      this.isLogged = false;
-    });
+      .then(() => {
+        this.router.navigate(['']);
+        this.isLogged = false;
+      });
   }
 
   forgotPassword(passwordResetEmail) {
     return this.angularFireAuth.sendPasswordResetEmail(passwordResetEmail)
-    .then(() => {
-      window.alert('Password reset email sent, check your inbox.');
-    }).catch((error) => {
-      this.eventAuthError.next(error);
-    })
+      .then(() => {
+        window.alert('Password reset email sent, check your inbox.');
+      }).catch((error) => {
+        this.eventAuthError.next(error);
+      })
   }
 
   GoogleAuth() {
@@ -110,19 +113,81 @@ export class AuthService {
 
   FacebookAuth() {
     return this.authLogin(new auth.FacebookAuthProvider());
-  }  
+  }
 
   authLogin(provider) {
     return this.angularFireAuth.signInWithPopup(provider)
       .then((userCredential) => {
-          this.ngZone.run(() => {
-            this.isLogged = true;
-            this.router.navigate(['/home']);
-          })
-          this.insertUserData(userCredential);
+        this.ngZone.run(() => {
+          this.isLogged = true;
+          this.router.navigate(['/home']);
+        })
+        this.insertUserData(userCredential);
       }).catch((error) => {
-          this.eventAuthError.next(error);
+        this.eventAuthError.next(error);
       })
   }
 
+  currentUserName = () => {
+    var user = firebase.auth().currentUser;
+    var name;
+
+    if (user != null) {
+      name = user.displayName;
+    }
+
+    return name;
+
+  }
+
+  currentUserEmail = () => {
+    var user = firebase.auth().currentUser;
+    var email;
+
+    if (user != null) {
+      email = user.email;
+    }
+
+    return email;
+  }
+
+  delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve,ms));
+  }
+
+  reauthenticate = (currentPassword) => {
+    var user = firebase.auth().currentUser;
+    var cred = firebase.auth.EmailAuthProvider.credential(
+      user.email, currentPassword);
+    return user.reauthenticateWithCredential(cred);
+  }
+
+  changeEmail = (currentPassword, newEmail) => {
+    this.reauthenticate(currentPassword).then(() => {
+      var user = firebase.auth().currentUser;
+      user.updateEmail(newEmail).then(() => {
+        window.alert('Email updated!');
+        this. sendVerificationMail()
+      }).catch((error) => { 
+        alert(error);
+      });
+    }).catch((error) => { 
+      alert(error) });
+  }
+
+  resetPassword = (newPassword) => {
+    var user = firebase.auth().currentUser;
+    user.updatePassword(newPassword).then( () => {
+      alert('New password has been saved');
+    }).catch((error) => {
+      alert(error);
+    })
+  }
+
+  async updateProfile(photo: string) {
+    const profile = {
+        photoURL: photo
+    }
+    return (await firebase.auth().currentUser).updateProfile(profile);
+  }
 }

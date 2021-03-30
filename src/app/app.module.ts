@@ -23,6 +23,7 @@ import { VerifyEmailComponent } from './component/verify-email/verify-email.comp
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { RevFormComponent } from './component/reviewForm/revForm.component';
+import { AngularFireStorageModule } from '@angular/fire/storage';
  
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { RevFormComponent } from './component/reviewForm/revForm.component';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-    AngularFireAuthModule // imports firebase/auth, only needed for auth features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
