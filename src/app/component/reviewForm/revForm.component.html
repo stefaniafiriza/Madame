@@ -1,27 +1,37 @@
-<body>
-<div class="rev-modal">
+<div class="body">
 
-    <div class="container">
-
-        <form action="review()">
-            
-            <div class="input-icons">
-                <i class="fa fa-user icon"></i>
-                <input class="log-reg" type="text" placeholder="Name" name="name" [(ngModel)]="user.Name" required>
-            </div>
-            
-            <div class="input-icons">
-                <i class="fa fa-envelope icon"></i>
-
-                <textarea class="log-reg" type="text" placeholder="Your review" name="review"  required></textarea>
-            </div>
-            
-            
-        <button class="submitButton" (click)="review()">Send</button>
-
-        </form>
+    <div class="rev-modal">
         
-        <button class="backButton" (click)="sendReview()">Back</button>
+        <div class="container">
+            
+            <form action="review()">
+                
+                <div class="input-icons">
+                    <i class="fa fa-user icon"></i>
+                    <input class="log-reg" type="text" placeholder="Name" name="name" *ngIf="user !== null" [(ngModel)]="user.Name" required>
+                    <input class="log-reg" type="text" placeholder="Name" name="name" *ngIf="user === null" [formControl]="name"  required>
+
+                </div>
+                
+                <div class="input-icons">
+                    <i class="fa fa-envelope icon"></i>
+                    
+                    <textarea [formControl]="reviewText" class="log-reg" type="text" placeholder="Your review" name="review"  required></textarea>
+                </div>
+                
+                <div class="input-icons">
+                    <i class="fa fa-star icon"></i>
+                    
+                    <input class="log-reg" type="number" max="5" min="0" [formControl]="stars" placeholder="Stars (between 1 and 5)" name="review"  required>
+                    
+                </div>
+                
+                <button class="submitButton" type="button" (click)="review()">Send</button>
+                
+            </form>
+        
+            <button class="backButton" (click)="sendReview()">Back</button>
+        </div>
     </div>
+    
 </div>
-</body>

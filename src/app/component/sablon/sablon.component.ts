@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 import { Staff } from './staff';
 
 @Component({
@@ -16,20 +16,30 @@ export class StaffComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    
+    
   }
 
-
+  
+  
   bookCook()
   {
-    let result = confirm("Do you want to book this chef?");
-    if(result)
-    {
-      // OK
-      alert(`You booked ${this.staff.name}, he will arive shortly`);
+
+     if(this.staff.booked == 0){
+
+      let result = confirm("Do you want to book this chef?");
+      if(result)
+      {
+        this.staff.booked=1;
+        alert(`You booked ${this.staff.name}, he will arive shortly`);
+      }
+      else
+      {
+        // RETURN
+      }
     }
-    else
-    {
-      // RETURN
+    else{
+      alert(`This chef has already been booked.`)
     }
   }
 
