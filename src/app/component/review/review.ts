@@ -1,5 +1,6 @@
 export interface Review {
-    nume: string,
+    name: string,
     review: string,
-    stars: number
+    stars: number,
+    id: string
 }

@@ -12,8 +12,9 @@ import { Staff } from '../sablon/staff';
 export class TeamComponent implements OnInit {
 
   teamList : Staff[] = [
-  {name: "Chef Ivan", link : "google.com", photo: "assets\\image\\chef2.png", description: "Specialist in chinese food.", rating : 4.85},
-  {name: "Chef Betina", link : "google.com", photo: "assets\\image\\chef3.png", description: "Specialist in sea-food related recipes.", rating : 5}  ]
+  // {name: "Chef Ivan", link : "google.com", photo: "assets\\image\\chef2.png", description: "Specialist in chinese food.", rating : 4.85},
+  // {name: "Chef Betina", link : "google.com", photo: "assets\\image\\chef3.png", description: "Specialist in sea-food related recipes.", rating : 5}  
+]
 
 
   constructor(
@@ -38,7 +39,8 @@ export class TeamComponent implements OnInit {
           link : value.link,
           photo: value.photo,
           description: value.description,
-          rating: value.rating
+          rating: value.rating,
+          booked: value.booked
         }
       )
     });

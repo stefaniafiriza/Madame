@@ -8,17 +8,25 @@
                 
                 <div class="input-icons">
                     <i class="fa fa-user icon"></i>
-                    <input class="log-reg" type="text" placeholder="Name" name="name" [(ngModel)]="user.Name" required>
+                    <input class="log-reg" type="text" placeholder="Name" name="name" *ngIf="user !== null" [(ngModel)]="user.Name" required>
+                    <input class="log-reg" type="text" placeholder="Name" name="name" *ngIf="user === null" [formControl]="name"  required>
+
                 </div>
                 
                 <div class="input-icons">
                     <i class="fa fa-envelope icon"></i>
                     
-                    <textarea class="log-reg" type="text" placeholder="Your review" name="review"  required></textarea>
+                    <textarea [formControl]="reviewText" class="log-reg" type="text" placeholder="Your review" name="review"  required></textarea>
                 </div>
                 
+                <div class="input-icons">
+                    <i class="fa fa-star icon"></i>
+                    
+                    <input class="log-reg" type="number" max="5" min="0" [formControl]="stars" placeholder="Stars (between 1 and 5)" name="review"  required>
+                    
+                </div>
                 
-                <button class="submitButton" (click)="review()">Send</button>
+                <button class="submitButton" type="button" (click)="review()">Send</button>
                 
             </form>
         

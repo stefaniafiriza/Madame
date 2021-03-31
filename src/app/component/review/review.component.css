@@ -39,28 +39,54 @@ body {
  
 
  
-
-
-/* Style tab links */
-.tablink {
-  background-color: #555;
-  color: white;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  font-size: 17px;
-  width: 25%;
-}
-
-.tablink:hover {
-  background-color: #777;
-}
-
-/* Style the tab content (and add height:100% for full page content) */
 .tabcontent {
-  color: white;
-  padding: 100px 20px;
-  height: 100%;
+  
+   color: white;
+   background-color: rgb(94, 104, 107);
+   padding: 25px 50px 75px 100px;
+   background-image: linear-gradient(to bottom right, rgb(88, 76, 76), rgb(0, 0, 0));
+   background: rgba(52, 59, 52, 0.3);
+
+   border: 15px solid rgb(24, 20, 20);
+   margin-left: 25%;
+   margin-right: auto;
+   border-radius: 15px 50px;
+   /* width: 60%;  */
+   
+   max-width: 1000px;
+
+   position: absolute;
+   top: 30%;
+  
+   text-align: center;
+   font-size: 18px;
+
+  
+}
+
+.tabcontent p{
+  font-style: italic;
+  font-size: 30px;
+ 
+}
+
+.tabcontent button{
+  background-color: #1e241e;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    transform: translate(-50%,-50%);
+    margin-top: 10px;
+    margin-left: 700px;
+    cursor: pointer;
+    border-radius: 12px;
+    transition-duration: 0.4s;
+
+}
+
+.tabcontent button:hover {
+  background-color: #19193a; 
 }

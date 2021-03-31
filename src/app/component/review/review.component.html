@@ -1,21 +1,3 @@
-<!-- 
-<body>
-    <div class="nav-bar">
-        <ul type="none">
-            <li><a (click)="sendHome()">Home</a></li>
-            <li><a><i class='fa fa-user-circle'></i>Profile</a></li>
-            <li><a *ngIf="!hideBarLink" (click)="sendLogin()">Sign in</a></li>
-            <li><a *ngIf="!hideBarLink" (click)="sendRegister()">Sign up</a></li>
-            <li><a (click)="sendFav()">Favourites Food</a></li>
-            <li><a (click)="sendTeam()">Team</a></li>
-            
-        </ul>
-    </div>
-
-    <button class="button" (click)="sendRev()" >Tell us your opinion!</button>
-</body>
- -->
-
 <body>
     <div class="nav-bar">
         <ul type="none">
@@ -31,9 +13,17 @@
 
 
 <div class="tabcontent">
-  <p>{{ reviews[currentReview].nume }}</p>
+
+  <h1>{{ reviews[currentReview].name }}</h1>
+  <br>
+  <hr>
   <p>{{ reviews[currentReview].review }}</p>
-  <button (click)="nextReview()">Next</button>
+  <br>
+  <hr>
+  <h1><b> {{ reviews[currentReview].stars }} </b> <svg height="30" xmlns="http://www.w3.org/2000/svg" fill="all" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+  </svg></h1>
+  <button (click)="nextReview()">Next review</button>
 </div>
 
 <button class="button" (click)="sendRev()" >Tell us your opinion!</button>

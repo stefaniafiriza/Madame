@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
-import { database } from 'firebase';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { database, firestore } from 'firebase';
 import { AuthService } from 'src/app/service/auth.service';
 import { FavFood } from '../sablonFood/favFood';
 @Component({
@@ -10,9 +11,12 @@ import { FavFood } from '../sablonFood/favFood';
 })
 export class FavouritesComponent implements OnInit {
 
-  productList : FavFood[] = [ {name:"Salad",photo:"assets\\image\\food6.png",description: "Extra fresh salad.",rating: 5},
-  {name:"Burger",photo:"assets\\image\\burger.png",description: "A very tasty burger",rating: 4.95},
-  {name:"Chicken",photo:"assets\\image\\food1.png",description: "Honey glazed chicken",rating: 4.8}]
+  productList : FavFood[] = [
+  //    {name:"Salad",photo:"assets\\image\\food6.png",description: "Extra fresh salad.",rating: 5},
+  // {name:"Burger",photo:"assets\\image\\burger.png",description: "A very tasty burger",rating: 4.95},
+  // {name:"Chicken",photo:"assets\\image\\food1.png",description: "Honey glazed chicken",rating: 4.8}
+
+]
 
   databaseRef: database.Reference;
   
@@ -22,26 +26,25 @@ export class FavouritesComponent implements OnInit {
     private auth: AuthService
   ) { }
 
+ 
+ 
+
   ngOnInit(): void {
-
-    this.databaseRef = database().ref("favfood/");
-
-    this.databaseRef.on("value",(snapshot)=>{
-      this.snapshotToStaffArray(snapshot);
-    },(error)=>{
-
-    }); 
+    firestore().collection('products').doc('products').get().then( (snapshot) => {
+      this.snapshotToStaffArray(snapshot.data());
+    })
   }
-  snapshotToStaffArray(snapshot: database.DataSnapshot){
-    let json = snapshot.toJSON();
-    Object.keys(json).forEach((key)=>{
-      let value = json[key];
+
+  snapshotToStaffArray(snapshot: firestore.DocumentData){
+
+    Object.keys(snapshot).forEach((key)=>{
+      let value = snapshot[key];
       this.productList.push(
         {
           name: value.name,
           photo: value.photo,
           description: value.description,
-          rating: value.rating
+          rating: value.rating,
         }
       )
     });

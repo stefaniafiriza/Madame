@@ -7,12 +7,12 @@
 body {
     font-family: 'Muli', sans-serif;
     color: white;
-    background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65),rgba(0,0,0,0.38),rgba(0,0,0,0)),
-    url(../../../assets/image/foodd.jpg)no-repeat center center fixed;
-    background-size: cover;
+    background: url("/assets/image/foodd.jpg") no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
-    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    
     min-height: 100vh;
     width: 100%;
 }

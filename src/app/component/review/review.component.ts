@@ -17,7 +17,7 @@ export class ReviewComponent implements OnInit {
   hideBarLink: boolean = false;
   logged: boolean = this.auth.isLogged == false ? this.hideBarLink = false : this.hideBarLink = true;
 
-  reviews : Review [] = []// [ { nume:"Georgica", review: "A very nice place", stars: 5 }, {nume:"Andi", review: "Very tasty food", stars: 4.5 }];
+  reviews : Review [] = [{name:'', review:'', stars: 0, id: '0'}]// [ { nume:"Georgica", review: "A very nice place", stars: 5 }, {nume:"Andi", review: "Very tasty food", stars: 4.5 }];
   currentReview: number = 0;
 
   
@@ -33,17 +33,19 @@ export class ReviewComponent implements OnInit {
   }
 
   snapshotToReviewArray(snapshot: firestore.DocumentData){
-   
+    
     Object.keys(snapshot).forEach((key)=>{
       let value = snapshot[key];
       this.reviews.push(
         {
-          nume: value.name,
+          name: value.name,
           review: value.review,
-          stars: value.stars
+          stars: value.stars,
+          id: key
         }
       )
     });
+    this.reviews.shift();
   }
 
   openPage(id){
