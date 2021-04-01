@@ -25,6 +25,8 @@ import { ProfileComponent } from './component/profile/profile.component';
 import { ReviewComponent } from './component/review/review.component'
 import { RevFormComponent } from './component/reviewForm/revForm.component';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { CookieService } from 'ngx-cookie-service';
+import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
  
 @NgModule({
   declarations: [
@@ -50,9 +52,12 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    AngularFireAuthGuardModule
   ],
-  providers: [],
+  providers: [ 
+    CookieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,6 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../models/user';
 import { delay, map } from 'rxjs/operators';
 import * as firebase from 'firebase';
+import { CookieService } from 'ngx-cookie-service';
 
 import { auth } from 'firebase/app';
 
@@ -30,7 +31,8 @@ export class AuthService {
     private angularFireAuth: AngularFireAuth,
     private db: AngularFirestore,
     private router: Router,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private cookie: CookieService
   ) {
     this.users = this.db.collection('Users').snapshotChanges().pipe(map (
       actions => {
@@ -95,6 +97,8 @@ export class AuthService {
           if (userCredential.user.emailVerified !== false) {
             this.isLogged = true;
             this.password = password;
+            this.cookie.set('usernameCookie', email);
+            this.cookie.set('passwordCookie', password);
             this.router.navigate(['/home']);
           } else {
             window.alert('Please validate your email address. Kindly check your inbox.');
@@ -109,6 +113,7 @@ export class AuthService {
       .then(() => {
         this.router.navigate(['']);
         this.isLogged = false;
+        this.cookie.deleteAll();
       });
   }
 
