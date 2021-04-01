@@ -18,7 +18,6 @@ export class ProfileComponent implements OnInit {
   ref: AngularFireStorageReference;
   task: AngularFireUploadTask;
 
-
   constructor(
     private router: Router,
     private auth: AuthService,
@@ -35,11 +34,22 @@ export class ProfileComponent implements OnInit {
     };
   }
 
+  u: User;
+  emailUser: string = this.auth.currentUserEmail();
+
   ngOnInit(): void {
+    this.auth.getUser(this.emailUser).subscribe(
+      (users: User[]) => {
+        for (this.u of users) {
+          if (this.u.email === this.emailUser){
+            this.url = this.u.photo;
+          }
+        }
+      }
+    );
   }
 
   name: string = this.auth.currentUserName();
-  emailUser: string = this.auth.currentUserEmail();
   userPassword: string = this.auth.password;
   email: string;
   newPassword: string;
@@ -81,6 +91,7 @@ export class ProfileComponent implements OnInit {
           this.storage.ref('profile-images/' + photoId)
             .getDownloadURL()
             .subscribe(downloadUrl => {
+              console.log(downloadUrl);
               this.auth.updateProfile(downloadUrl);
             });
         })
