@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-home',
@@ -11,10 +12,14 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private auth: AuthService
+    private auth: AuthService,
+    private cookie: CookieService
   ) {}
 
   ngOnInit(): void {
+    if (this.cookie.get('usernameCookie') != null) {
+      this.auth.isLogged = true;
+    }
   }
 
   sendRegister () {
