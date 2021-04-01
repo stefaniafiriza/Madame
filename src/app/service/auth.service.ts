@@ -15,7 +15,7 @@ import { auth } from 'firebase/app';
 })
 export class AuthService {
 
-  users: AngularFirestoreCollection<User>;
+  users : Observable<any[]>;
   u: User;
   isLogged: boolean = false;
   password: string;
@@ -32,7 +32,21 @@ export class AuthService {
     private router: Router,
     private ngZone: NgZone
   ) {
-    this.users = db.collection<User>('/Users');
+    this.users = this.db.collection('Users').snapshotChanges().pipe(map (
+      actions => {
+        return actions.map(
+          a => {
+            const data = a.payload.doc.data() as User;
+            return data;
+          }
+        )
+      }
+    ));
+  }
+
+  getUser(email: string): Observable<User[]> {
+    return this.db.collection<User>('/Users').valueChanges()
+      .pipe(map(elem => elem.filter(user => user.email === email)));
   }
 
   sendVerificationMail() {
@@ -185,9 +199,9 @@ export class AuthService {
   }
 
   async updateProfile(photo: string) {
-    const profile = {
-        photoURL: photo
-    }
-    return (await firebase.auth().currentUser).updateProfile(profile);
+    var user = firebase.auth().currentUser;
+    this.db.doc(`Users/${user.uid}`).update({
+      photo: photo
+    });
   }
 }
