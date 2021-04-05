@@ -14,6 +14,7 @@ import { ForgotPasswordComponent } from '../app/component/forgot-password/forgot
 import { ProfileComponent } from '../app/component/profile/profile.component';
 import { ReviewComponent } from '../app/component/review/review.component';
 import { RevFormComponent } from '../app/component/reviewForm/revForm.component';
+import { ContactFormComponent } from '../app/component/contact-form/contact-form.component';
 import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
@@ -27,7 +28,8 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'profile', component:ProfileComponent, canActivate: [AuthGuard] },
   { path: 'review', component: ReviewComponent },
-  { path: 'rev', component: RevFormComponent }
+  { path: 'rev', component: RevFormComponent },
+  { path: 'contact', component: ContactFormComponent }
 ];
 
 @NgModule({

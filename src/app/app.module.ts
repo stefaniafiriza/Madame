@@ -27,6 +27,8 @@ import { RevFormComponent } from './component/reviewForm/revForm.component';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { CookieService } from 'ngx-cookie-service';
 import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
+import { ContactFormComponent } from './component/contact-form/contact-form.component';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
  
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
     ForgotPasswordComponent,
     ProfileComponent,
     ReviewComponent,
-    RevFormComponent
+    RevFormComponent,
+    ContactFormComponent
   ],
   imports: [
     FormsModule,
@@ -53,7 +56,8 @@ import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     AngularFireStorageModule,
-    AngularFireAuthGuardModule
+    AngularFireAuthGuardModule,
+    AngularFireDatabaseModule,
   ],
   providers: [ 
     CookieService
