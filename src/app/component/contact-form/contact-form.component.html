@@ -1,4 +1,16 @@
 <div class="container">
+
+    <div class="nav-bar">
+        <ul type="none">
+            <li><a *ngIf="!hideBarLink" (click) = "back()">Back</a></li>
+            <li><a *ngIf="hideBarLink" (click) = "sendHome()">Home</a></li>
+            <li><a *ngIf="hideBarLink" (click) = "sendProfile()"><i class='fa fa-user-circle'></i>Profile</a></li>
+            <li><a *ngIf="hideBarLink">Online order</a></li>
+            <li><a>Daily menu</a></li>
+            <li><a *ngIf="hideBarLink" (click) = "logout()">Logout</a></li>
+        </ul>
+    </div>
+
     <h1>Send Us A Message</h1>
 
     <form [formGroup]="FormData" (ngSubmit)="onSubmit()">
@@ -16,11 +28,6 @@
         </div>
 
         <button class="btnSubmit" type="submit" [disabled]="FormData.invalid">Submit</button>
-        
-        <!-- <div class="input-icons">
-            <i class="fa fa-paper-plane-o m-r-6 icon" aria-hidden="true" id="icon"></i>
-            <button class="btnSubmit" type="submit" [disabled]="FormData.invalid">Submit</button>
-        </div> -->
     
     </form>
 </div>

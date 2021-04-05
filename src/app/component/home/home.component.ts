@@ -17,9 +17,9 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (this.cookie.get('usernameCookie') != null) {
-      this.auth.isLogged = true;
-    }
+    // if (this.cookie.get('usernameCookie') != null) {
+    //   this.auth.isLogged = true;
+    // }
   }
 
   sendRegister () {
