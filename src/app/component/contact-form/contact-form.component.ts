@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireDatabase } from '@angular/fire/database';
-
+import { AuthService } from '../../service/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact-form',
@@ -14,7 +15,9 @@ export class ContactFormComponent implements OnInit {
 
   constructor(
     private builder: FormBuilder,
-    private angularFire: AngularFireDatabase
+    private angularFire: AngularFireDatabase,
+    private auth: AuthService,
+    private router: Router
   ) { 
     this.angularFire.list('messages').valueChanges();
     this.createForm(); 
@@ -23,12 +26,24 @@ export class ContactFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  name: string = this.auth.currentUserName();
+  email: string = this.auth.currentUserEmail();
+
   createForm() {
-    this.FormData = this.builder.group({
-      name: ['', Validators.required],
-      email: ['', Validators.required],
-      message: ['', Validators.required],
-    });
+
+    if (this.auth.isLogged == true) {
+      this.FormData = this.builder.group({
+        name: [this.name],
+        email: [this.email],
+        message: ['', Validators.required],
+      });
+    } else {
+      this.FormData = this.builder.group({
+        name: ['', Validators.required],
+        email: ['', Validators.required],
+        message: ['', Validators.required],
+      });
+    }
   }
 
   onSubmit() {
@@ -44,6 +59,25 @@ export class ContactFormComponent implements OnInit {
     this.angularFire.list('/messages').push(formRequest);
     alert('Thank you for contacting us, your message has gone through!');
     this.FormData.reset();
+  }
+
+  hideBarLink: boolean = false;
+  logged: boolean = this.auth.isLogged == false ? this.hideBarLink = false : this.hideBarLink = true;
+
+  sendProfile () {
+    this.router.navigate(['/profile']);
+  }
+
+  sendHome () {
+    this.router.navigate(['/home']);
+  }
+
+  back () {
+    this.router.navigate(['']);
+  }
+
+  logout() {
+    this.auth.logout();
   }
 
 }
