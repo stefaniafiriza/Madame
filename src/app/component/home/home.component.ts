@@ -53,4 +53,8 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/profile']);
   }
 
+  sendContact () {
+    this.router.navigate(['/contact']);
+  }
+
 }

@@ -1,0 +1,26 @@
+<div class="container">
+    <h1>Send Us A Message</h1>
+
+    <form [formGroup]="FormData" (ngSubmit)="onSubmit()">
+        <div data-validate="Please enter your name">
+            <input class="input" type="text" placeholder="Name" formControlName="name" placeholder="Your name">
+        </div>
+    
+
+        <div data-validate = "Please enter your email: e@a.x">
+            <input class="input" type="text" placeholder="Email" formControlName="email" placeholder="Your e-mail">
+        </div>
+
+        <div data-validate = "Please enter your message">
+            <textarea class="textarea" placeholder="Message" formControlName="message" placeholder="Your Message"></textarea>
+        </div>
+
+        <button class="btnSubmit" type="submit" [disabled]="FormData.invalid">Submit</button>
+        
+        <!-- <div class="input-icons">
+            <i class="fa fa-paper-plane-o m-r-6 icon" aria-hidden="true" id="icon"></i>
+            <button class="btnSubmit" type="submit" [disabled]="FormData.invalid">Submit</button>
+        </div> -->
+    
+    </form>
+</div>
