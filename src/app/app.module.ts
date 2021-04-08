@@ -29,6 +29,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
 import { ContactFormComponent } from './component/contact-form/contact-form.component';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { OrderComponent } from './component/order/order.component';
  
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
     ProfileComponent,
     ReviewComponent,
     RevFormComponent,
-    ContactFormComponent
+    ContactFormComponent,
+    OrderComponent
   ],
   imports: [
     FormsModule,

@@ -5,7 +5,7 @@
             <li><a *ngIf="!hideBarLink" (click) = "back()">Back</a></li>
             <li><a *ngIf="hideBarLink" (click) = "sendHome()">Home</a></li>
             <li><a *ngIf="hideBarLink" (click) = "sendProfile()"><i class='fa fa-user-circle'></i>Profile</a></li>
-            <li><a *ngIf="hideBarLink">Online order</a></li>
+            <li><a *ngIf="hideBarLink" (click) = "sendOrder()">Online order</a></li>
             <li><a>Daily menu</a></li>
             <li><a *ngIf="hideBarLink" (click) = "logout()">Logout</a></li>
         </ul>
