@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css?family=Muli');
+
+.body-page {
+    font-family: 'Muli', sans-serif;
+    background: linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.65),rgba(0,0,0,0.38),rgba(0,0,0,0))
+    ,url(../../../assets/image/menu.jpg)no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+@media only screen and (min-height: 600px) {
+    .motto {
+        min-height: 82.4vh;
+    }
+}
+
+@media only screen and (min-height: 650px) {
+    .motto {
+        min-height: 85.4vh;
+    }
+}
+
+@media only screen and (min-height: 800px) {
+    .motto {
+        min-height: 88.3vh;
+    }
+}
+
+.title {
+    padding-top: 100px;
+    text-align: center;
+    color: darkgray;
+}
+
+.title h3 {
+    font-family: 'Brush Script MT', serif; 
+    font-size: 80px; 
+    font-variant: normal; 
+    font-weight: 700; 
+    line-height: 15.4px;
+}
+
+.title h4 {
+    font-family: 'Brush Script MT', serif; 
+    font-size: 50px; 
+    font-variant: normal; 
+    font-weight: 700; 
+    line-height: 15.4px;
+    padding-top: 45px;
+}
+
+#course1 {
+    display: block;
+}
+
+#course2, #course3, #course4, #course5, #course6, #course7, #course8 {
+    display: none;
+}
+
+.type-dish {
+    float: inline-start;
+    border: 1px solid none;
+    padding-top: 50px;
+    padding-left: 200px;
+}
+
+.type-dish ul li {
+    cursor: pointer;
+    float: left;
+    text-align: center;
+    margin: 30px, auto;
+    width: 150px;
+}
+
+.type-dish ul li a {
+    text-decoration: none;
+    color: darkgray;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.type-dish ul li a:hover {
+    text-transform: uppercase;
+}
+
+hr {
+    margin-top: 50px;
+    width: 85%;
+    margin-left: 8%;
+}
+
+.product__image {
+    width: 100%; 
+    height: 100%; 
+    object-fit: contain;
+    padding-top: 10px;
+    transition: transform .2s;
+}
+
+.product__image:hover {
+    transform: scale(1.5);
+}
+
+
+.put_in_cart {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: rgba(0,0,0,0.6);
+    text-align: center;
+    cursor: pointer;
+    width: 50px;
+    height: 280px;
+    font-size: 18px;
+}
+
+.put_in_cart:focus {
+    outline: none;
+}
+
+.put_in_cart:hover {
+    opacity: 0.7;
+}
+
+.products__container section {
+    display: block;
+}
+
+table {
+    border-spacing: 0px 20px;
+    border-collapse: separate;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 25px;
+    
+}
+
+tr {
+    text-align: center;
+    padding: 5px;
+    height: 100px;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.6), 0 8px 22px 0 rgba(0, 0, 0, 0.23);
+    background-color:rgba(0,0,0,0.45);
+}
+
+.product__title, .product_description {
+    color: darkgray;
+}
+
+.product__title {
+    font-weight: bold;
+    font-size: 20px;
+}

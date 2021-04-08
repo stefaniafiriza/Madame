@@ -57,4 +57,8 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/contact']);
   }
 
+  sendOrder () {
+    this.router.navigate(['/order']);
+  }
+
 }

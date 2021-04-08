@@ -80,4 +80,8 @@ export class ContactFormComponent implements OnInit {
     this.auth.logout();
   }
 
+  sendOrder () {
+    this.router.navigate(['/order']);
+  }
+
 }
