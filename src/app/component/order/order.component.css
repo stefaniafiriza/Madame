@@ -89,13 +89,14 @@
 
 hr {
     margin-top: 50px;
+    -webkit-margin-top-collapse: 95px;
     width: 85%;
     margin-left: 8%;
 }
 
 .product__image {
-    width: 100%; 
-    height: 100%; 
+    max-width: 30%; 
+    max-height: 100%; 
     object-fit: contain;
     padding-top: 10px;
     transition: transform .2s;
@@ -148,11 +149,11 @@ tr {
     background-color:rgba(0,0,0,0.45);
 }
 
-.product__title, .product_description {
+.product__title, .product_description,.product__price {
     color: darkgray;
 }
 
-.product__title {
+.product__title,.product__price {
     font-weight: bold;
     font-size: 20px;
 }
