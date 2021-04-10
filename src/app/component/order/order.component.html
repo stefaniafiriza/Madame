@@ -1,14 +1,14 @@
 <div class="body-page">
     <div class="nav-bar">
         <ul type="none">
-            <li><a><i class='fa fa-user-circle'></i>
+            <li><a (click)="sendProfile()"><i class='fa fa-user-circle'></i>
                     Profile</a></li>
-            <li><a>Home</a></li>
+            <li><a (click)="sendHome()">Home</a></li>
             <li><a>Daily menu</a></li>
-            <li><a>Team</a></li>
-            <li><a>Contact us</a></li>
+            <li><a (click)="sendTeam()">Team</a></li>
+            <li><a (click)="sendContact()">Contact us</a></li>
             <li><a>Cart</a></li>
-            <li><a>Logout</a></li>
+            <li><a (click)="logout()">Logout</a></li>
         </ul>
     </div>
 
@@ -36,14 +36,15 @@
 
     <div class="products__container" id="course1">
         <table>
-            <ng-container>
+            <ng-container  *ngFor="let product of pizzas">
                 <tr>
                     <td>
-                        <img class="product__image"/>
+                        <img *ngIf="product.photo" class="product__image" [src]="product.photo"/>
                     </td>
                     <td>
-                        <strong class="product__title"></strong>
-                        <p class="product_description"></p>
+                        <strong class="product__title">{{ product.name }}</strong>
+                        <p class="product_description">{{ product.description }}</p>
+                        <em class="product__price">{{ product.price | currency: 'EUR' }}</em>
                     </td>
                     <td>
                         <button class="put_in_cart"><i class="fa fa-shopping-basket"></i></button>
@@ -55,14 +56,15 @@
 
     <div class="products__container" id="course2">
         <table>
-            <ng-container>
+            <ng-container *ngFor="let product of pastas">
                 <tr>
                     <td>
-                        <img class="product__image" />
+                        <img *ngIf="product.photo" class="product__image" [src]="product.photo" style="width: 25%;"/>
                     </td>
                     <td>
-                        <strong class="product__title"></strong>
-                        <p class="product_description"></p>
+                        <strong class="product__title">{{ product.name }}</strong>
+                        <p class="product_description">{{ product.description }}</p>
+                        <em class="product__price">{{ product.price | currency: 'EUR' }}</em>
                     </td>
                     <td>
                         <button class="put_in_cart"><i class="fa fa-shopping-basket"></i></button>
@@ -74,14 +76,15 @@
 
     <div class="products__container" id="course3">
         <table>
-            <ng-container>
+            <ng-container *ngFor="let product of soups">
                 <tr>
                     <td>
-                        <img class="product__image" />
+                        <img *ngIf="product.photo" class="product__image" [src]="product.photo" />
                     </td>
                     <td>
-                        <strong class="product__title"></strong>
-                        <p class="product_description"></p>
+                        <strong class="product__title">{{ product.name }}</strong>
+                        <p class="product_description">{{ product.description }}</p>
+                        <em class="product__price">{{ product.price | currency: 'EUR' }}</em>
                     </td>
                     <td>
                         <button class="put_in_cart"><i class="fa fa-shopping-basket"></i></button>
@@ -112,14 +115,15 @@
 
     <div class="products__container" id="course5">
         <table>
-            <ng-container>
+            <ng-container  *ngFor="let product of meats">
                 <tr>
                     <td>
-                        <img class="product__image" />
+                        <img *ngIf="product.photo" class="product__image" [src]="product.photo" style="width: 20%;"/>
                     </td>
                     <td>
-                        <strong class="product__title"></strong>
-                        <p class="product_description"></p>
+                        <strong class="product__title">{{ product.name }}</strong>
+                        <p class="product_description">{{ product.description }}</p>
+                        <em class="product__price">{{ product.price | currency: 'EUR' }}</em>
                     </td>
                     <td>
                         <button class="put_in_cart"><i class="fa fa-shopping-basket"></i></button>
