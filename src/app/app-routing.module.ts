@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { isDevMode, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AngularFireAuthGuard, redirectLoggedInTo, redirectUnauthorizedTo, isNotAnonymous } from '@angular/fire/auth-guard';
 import { map } from 'rxjs/operators';
@@ -20,14 +20,14 @@ import { OrderComponent } from '../app/component/order/order.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'home', component: HomeComponent, canActivate: isDevMode() ? [] : [AuthGuard] },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'team', component: TeamComponent, canActivate: [AuthGuard] },
-  { path: 'fav', component: FavouritesComponent, canActivate: [AuthGuard] },
+  { path: 'team', component: TeamComponent, canActivate: isDevMode() ? [] : [AuthGuard]  },
+  { path: 'fav', component: FavouritesComponent, canActivate: isDevMode() ? [] : [AuthGuard]  },
   { path: 'verify-email', component: VerifyEmailComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
-  { path: 'profile', component:ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component:ProfileComponent, canActivate: isDevMode() ? [] : [AuthGuard]  },
   { path: 'review', component: ReviewComponent },
   { path: 'rev', component: RevFormComponent },
   { path: 'contact', component: ContactFormComponent },

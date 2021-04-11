@@ -5,5 +5,6 @@ export class Staff{
     link : string;
     description : string;
     booked: number;
+    plus: string;
     
 }

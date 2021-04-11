@@ -1,12 +1,106 @@
-<div class="card">
-    <img src={{staff.photo}} alt="Avatar" style="width:100%">
-    <div class="container">
-      <h4><b>{{staff.name}}</b></h4>
-      <p>{{staff.description}}</p>
-      <h4><b>{{staff.rating}}</b><svg height="30" xmlns="http://www.w3.org/2000/svg" fill="all" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-        </svg></h4>
+<div class="card_team">
+  <img src={{staff.photo}} alt="Avatar" style="width:100%">
+  <div class="continut">
+    <h4><b>{{staff.name}}</b></h4>
     
-      <button class="button" (click)="bookCook()">Book chef</button>
+
+    <button class="button" (click)="openModal(true)">View details!</button>
+    
+      <!-- <button class="button" (click)="bookCook()">Book chef</button> -->
+      
+  </div>
+</div>
+
+<div id="mdlSample" class="modal fade" role="dialog"
+  [ngStyle]="{'display': mdlSampleIsOpen ? 'block' : 'none', 'opacity': 1}">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">{{staff.name}}'s details</h4>
+      </div>
+      <div class="modal-body">
+        <p >Brief description:</p>
+        
+        <p >{{staff.description}}</p>
+        <br>
+        <hr>
+        <p>Stars:</p>
+        <h4><b>{{staff.rating}}</b><svg height="30" xmlns="http://www.w3.org/2000/svg" fill="all" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+          </svg></h4>
+          <br>
+        <hr>
+        <p>What you get if you book this chef:</p>
+        <p>{{staff.plus}}</p>
+      </div>
+      <div class="modal-footer" align="right">
+        
+        <button type="button" id="btnOK" class="btn btn-success" (click)="sendBookchef()"><i
+            class="fa fa-check fa-fw"></i>Book this chef</button>
+        <button type="button" id="btnClose" class="btn btn-danger" (click)="openModal(false)"><i
+            class="fa fa-times fa-fw"></i> Cancel</button>
+      </div>
     </div>
-</div> 
+  </div>
+</div>
+
+
+
+<div id="mdlSample" class="modal fade" role="dialog"
+  [ngStyle]="{'display': sampleIsOpen ? 'block' : 'none', 'opacity': 1}">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">{{staff.name}}'s details</h4>
+      </div>
+      <div class="modal-body">
+
+        
+        <br>
+        <form action="book()">
+                    
+          <br>
+          <div class="input-icons">
+              <i class="fa fa-user icon"></i>
+              <input class="log-reg" type="text" placeholder="Name" name="name" *ngIf="user !== null" [(ngModel)]="user.Name" required>
+              <input class="log-reg" type="text" placeholder="Name" name="name" *ngIf="user === null" [formControl]="name"  required>
+              
+          </div>
+          
+          <br>
+          <div class="input-icons">
+              <i class="fa fa-home icon"></i>
+              <input class="log-reg" type="text" [formControl]="address" placeholder="Your address" name="date"  required>
+          </div>
+          
+          <br>
+          <div action="/action_page.php" class="input-icons">
+              <i class="fa fa-calendar icon"></i>
+              <input class="log-reg" type="date" [formControl]="date" placeholder="The date you want this chef to come" name="date"  required>
+          </div>
+          
+          <br>
+          
+          <div class="input-icons">
+              <i class="fa fa-phone icon"></i>
+              <input class="log-reg" type="number" [formControl]="phone" pattern="[0-9]{10}" placeholder="Phone number" name="phone"  required>
+          </div>
+          
+          <br>
+          <button class="submitButton" type="button" (click)="book()">Book</button>
+          
+      </form>
+        </div>
+      <div class="modal-footer" align="right">
+        
+        <button type="button" id="btnOK" class="btn btn-success" (click)="sendBookchef()"><i
+            class="fa fa-check fa-fw"></i>Book this chef</button>
+        <button type="button" id="btnClose" class="btn btn-danger" (click)="openModalNou(false)"><i
+            class="fa fa-times fa-fw"></i> Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+

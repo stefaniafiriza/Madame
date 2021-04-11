@@ -40,7 +40,8 @@ export class TeamComponent implements OnInit {
           photo: value.photo,
           description: value.description,
           rating: value.rating,
-          booked: value.booked
+          booked: value.booked,
+          plus: value.plus
         }
       )
     });

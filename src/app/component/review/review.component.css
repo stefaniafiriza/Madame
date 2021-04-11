@@ -16,7 +16,7 @@ body {
 
 
 .button {
-    background-color: #1e241e;
+    background-color: #000000;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -34,7 +34,7 @@ body {
 }
 
 .button:hover {
-    background-color: #19193a; 
+    background-color:  #19193a; 
 }
  
 
@@ -71,7 +71,7 @@ body {
 }
 
 .tabcontent button{
-  background-color: #1e241e;
+  background-color: #000000;
     border: none;
     color: white;
     padding: 15px 32px;

@@ -17,6 +17,9 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['../../nav.css', './review.component.css'],
 })
 export class RevFormComponent implements OnInit {
+  hideBarLink: boolean = false;
+  logged: boolean = this.auth.isLogged == false ? this.hideBarLink = false : this.hideBarLink = true;
+
   user: User | null = null;
 
 
@@ -24,7 +27,9 @@ export class RevFormComponent implements OnInit {
   stars = new FormControl(5)
   name = new FormControl('')
 
-  constructor(private router: Router) // private auth: AuthService
+  constructor(
+    private router: Router,
+    private auth:AuthService) 
   {}
   ngOnInit(): void {
     
@@ -53,4 +58,15 @@ export class RevFormComponent implements OnInit {
   sendReview() {
     this.router.navigate(['./review']);
   }
+  sendFav() {
+    this.router.navigate(['./fav']);
+  }
+  sendTeam() {
+    this.router.navigate(['./team']);
+    
+  }
+  sendHome() {
+    this.router.navigate(['./home']);
+  }
+
 }

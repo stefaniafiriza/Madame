@@ -6,16 +6,13 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-
     position: fixed; 
   top: 0; 
   left: 0; 
-	
-  /* Preserve aspet ratio */
   min-width: 100%;
   min-height: 100%;
 }
-.rev-modal{
+.revmodal{
     
     position: absolute;
     top: 0;
@@ -23,13 +20,14 @@
     font-family: 'Muli', sans-serif;
 }
 
-.container{
+.continut{
     padding: 20px;
     transform: translate(-50%,-50%);
     position: fixed;
     text-align: center;
     left: 50%;
     top: 50%;
+    width: 80%;
 }
 
 .input-icons i { 
@@ -70,6 +68,7 @@
     cursor: pointer;
     border-radius: 12px;
     transition-duration: 0.4s;
+    width: 50%;
 }
 .backButton:hover {
     background-color: #1c1c6e; 
@@ -81,10 +80,12 @@
     color: white;
     padding: 15px 32px;
     font-size: 16px;
-    margin: 4px 500px;
+    margin-top: 4px;
+    margin-bottom: 4px;
     cursor: pointer;
     border-radius: 12px;
     transition-duration: 0.4s;
+    width: 50%;
 }
 .submitButton:hover {
     background-color: #1c1c6e; 

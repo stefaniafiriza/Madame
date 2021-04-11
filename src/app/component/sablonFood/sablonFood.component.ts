@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/service/auth.service';
 @Component({
   selector: 'fav-food',
   templateUrl: './sablonFood.component.html',
-  styleUrls: ['../sablon/sablon.component.css'],
+  styleUrls: ['./sablonFood.component.css'],
 })
 export class FavFoodComponent implements OnInit {
 
