@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
 import { firestore } from 'firebase';
 import { Product } from '../../models/product';
+import { getProducts } from '../order/getProductList';
 
 @Component({
   selector: 'app-order',
@@ -15,6 +16,10 @@ export class OrderComponent implements OnInit {
   pastas: Product[] = [];
   soups: Product[] = [];
   meats: Product[] = [];
+  specialities: Product[] = [];
+  gaskets: Product[] = [];
+  sweets: Product[] = [];
+  drinks: Product[] = [];
 
   constructor(
     private auth: AuthService,
@@ -23,83 +28,35 @@ export class OrderComponent implements OnInit {
 
   ngOnInit(): void {
     firestore().collection('products').doc('pizza').get().then( (snapshot) => {
-      this.getPizzaProducts(snapshot.data());
+      getProducts(snapshot.data(),this.pizzas);
     });
 
     firestore().collection('products').doc('pasta').get().then( (snapshot) => {
-      this.getPastaProducts(snapshot.data());
+      getProducts(snapshot.data(),this.pastas);
     });
 
     firestore().collection('products').doc('soup').get().then( (snapshot) => {
-      this.getSoupProducts(snapshot.data());
+      getProducts(snapshot.data(),this.soups);
     });
 
     firestore().collection('products').doc('meat').get().then( (snapshot) => {
-      this.getMeatProducts(snapshot.data());
+      getProducts(snapshot.data(),this.meats);
     });
-  }
 
-  getPizzaProducts(snapshot: firestore.DocumentData){
-
-    Object.keys(snapshot).forEach((key)=>{
-      let value = snapshot[key];
-      this.pizzas.push(
-        {
-          name: value.name,
-          price: value.price,
-          photo: value.photo,
-          description: value.description,
-          rating: value.rating
-        }
-      )
+    firestore().collection('products').doc('sweet').get().then( (snapshot) => {
+      getProducts(snapshot.data(),this.sweets);
     });
-  }
 
-  getPastaProducts(snapshot: firestore.DocumentData){
-
-    Object.keys(snapshot).forEach((key)=>{
-      let value = snapshot[key];
-      this.pastas.push(
-        {
-          name: value.name,
-          price: value.price,
-          photo: value.photo,
-          description: value.description,
-          rating: value.rating
-        }
-      )
+    firestore().collection('products').doc('drink').get().then( (snapshot) => {
+      getProducts(snapshot.data(),this.drinks);
     });
-  }
 
-  getSoupProducts(snapshot: firestore.DocumentData){
-
-    Object.keys(snapshot).forEach((key)=>{
-      let value = snapshot[key];
-      this.soups.push(
-        {
-          name: value.name,
-          price: value.price,
-          photo: value.photo,
-          description: value.description,
-          rating: value.rating
-        }
-      )
+    firestore().collection('products').doc('gasket').get().then( (snapshot) => {
+      getProducts(snapshot.data(),this.gaskets);
     });
-  }
 
-  getMeatProducts(snapshot: firestore.DocumentData){
-
-    Object.keys(snapshot).forEach((key)=>{
-      let value = snapshot[key];
-      this.meats.push(
-        {
-          name: value.name,
-          price: value.price,
-          photo: value.photo,
-          description: value.description,
-          rating: value.rating
-        }
-      )
+    firestore().collection('products').doc('specialitie').get().then( (snapshot) => {
+      getProducts(snapshot.data(),this.specialities);
     });
   }
 

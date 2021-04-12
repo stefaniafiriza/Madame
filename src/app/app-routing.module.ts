@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: 'review', component: ReviewComponent },
   { path: 'rev', component: RevFormComponent },
   { path: 'contact', component: ContactFormComponent },
-  { path: 'order', component: OrderComponent}
+  { path: 'order', component: OrderComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
