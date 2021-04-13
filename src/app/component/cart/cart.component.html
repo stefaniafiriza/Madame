@@ -1,0 +1,39 @@
+<div class="cart-modal">
+    <div class="modal-content">
+
+        <div class="close" (click)="onClose()">+</div>
+
+        <div class="title">
+            <h2>Cart</h2>
+        </div>
+
+        <table class="table" ng-show="cartData.length > 0">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Price</th>
+                    <th colspan="2">Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>item.name</td>
+                    <td>item.price</td>
+                    <td>item.quantity</td>
+                    <td>
+                        <button class="btnRemove"><i class="fa fa-trash" style="font-size:24px"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>item.name</td>
+                    <td>item.price</td>
+                    <td>item.quantity</td>
+                    <td>
+                        <button class="btnRemove"><i class="fa fa-trash" style="font-size:24px"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

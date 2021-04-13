@@ -93,4 +93,14 @@ export class OrderComponent implements OnInit {
     this.router.navigate(['../team']);
   }
 
+  hidePopupCart: boolean = false;
+
+  showCart() {
+    this.hidePopupCart = !(this.hidePopupCart);
+  }
+
+  closeCart() {
+    this.hidePopupCart = false;
+  }
+
 }

@@ -7,7 +7,7 @@
             <li><a>Daily menu</a></li>
             <li><a (click)="sendTeam()">Team</a></li>
             <li><a (click)="sendContact()">Contact us</a></li>
-            <li><a>Cart</a></li>
+            <li><a (click)="showCart()">Cart</a></li>
             <li><a (click)="logout()">Logout</a></li>
         </ul>
     </div>
@@ -193,5 +193,7 @@
             </ng-container>
         </table>
     </div>
+
+    <app-cart *ngIf="hidePopupCart" (close)="closeCart()"></app-cart>
 
 </div>
