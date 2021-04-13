@@ -30,6 +30,7 @@ import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
 import { ContactFormComponent } from './component/contact-form/contact-form.component';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { OrderComponent } from './component/order/order.component';
+import { CartComponent } from './component/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { OrderComponent } from './component/order/order.component';
     ReviewComponent,
     RevFormComponent,
     ContactFormComponent,
-    OrderComponent
+    OrderComponent,
+    CartComponent
   ],
   imports: [
     FormsModule,

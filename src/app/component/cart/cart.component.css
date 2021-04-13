@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css?family=Muli');
+
+.cart-modal{
+    min-height: 100vh;
+    width: 100%;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-color: rgba(0, 0 , 0 , 0.7);
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Muli', sans-serif;
+}
+
+.modal-content{
+    width: 90%;
+    height: max-content;
+    background-color: white;
+    opacity: 1;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    text-align: center;
+    position: fixed;
+}
+
+.close{
+    position: absolute;
+    top: 0;
+    color: black;
+    right: 14px;
+    font-size: 42px;
+    font: bold;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+.title {
+    margin-top: 25px;
+}
+
+.title h2 {
+    font-family: 'Brush Script MT', serif; 
+    font-size: 80px; 
+    font-variant: normal; 
+    font-weight: 700; 
+    line-height: 15.4px;
+}
+
+.table {
+    margin-top: 80px;
+    border-collapse: collapse;
+    width: 100%;
+    height: max-content;
+}
+
+th {
+    background-color: black;
+    color: white;
+}
+
+td, th {
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.btnRemove {
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.btnRemove:focus {
+    outline: none;
+}
