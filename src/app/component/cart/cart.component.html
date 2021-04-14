@@ -7,32 +7,38 @@
             <h2>Cart</h2>
         </div>
 
-        <table class="table" ng-show="cartData.length > 0">
+        <table class="table">
             <thead>
                 <tr>
                     <th>Item</th>
-                    <th>Price</th>
-                    <th colspan="2">Quantity</th>
+                    <th>Quantity</th>
+                    <th colspan="2">Price</th>
                 </tr>
             </thead>
+
             <tbody>
-                <tr>
-                    <td>item.name</td>
-                    <td>item.price</td>
-                    <td>item.quantity</td>
-                    <td>
-                        <button class="btnRemove"><i class="fa fa-trash" style="font-size:24px"></i></button>
-                    </td>
+                <ng-container *ngFor="let product of cart">
+                    <tr>
+                        <td>{{product.name}}</td>
+                        <td>{{product.quantity}}</td>
+                        <td>{{product.price | currency: 'EUR'}}</td>
+                        <td>
+                            <button class="btnRemove" (click)=" removeProduct(product)"><i class="fa fa-trash" style="font-size:24px"></i></button>
+                        </td>
+                    </tr>
+                </ng-container>
+                <tr style="background-color:white">
+                    <td></td>
+                    <td></td>
+                    <td><h3>Total: {{ totalPrice | currency: 'EUR'}}</h3></td>
                 </tr>
-                <tr>
-                    <td>item.name</td>
-                    <td>item.price</td>
-                    <td>item.quantity</td>
-                    <td>
-                        <button class="btnRemove"><i class="fa fa-trash" style="font-size:24px"></i></button>
-                    </td>
+                <tr style="background-color:white">
+                    <td></td>
+                    <td></td>
+                    <td><button class="sendOrder">Send order</button></td>
                 </tr>
             </tbody>
+
         </table>
 
     </div>

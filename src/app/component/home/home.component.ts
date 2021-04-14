@@ -10,6 +10,8 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class HomeComponent implements OnInit {
 
+  hideBarLink: boolean = false;
+
   constructor(
     private router: Router,
     private auth: AuthService,
@@ -17,9 +19,10 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // if (this.cookie.get('usernameCookie') != null) {
-    //   this.auth.isLogged = true;
-    // }
+    if (this.cookie.get('usernameCookie').length != 0) {
+      this.auth.isLogged = true;
+      this.hideBarLink = true;
+    }
   }
 
   sendRegister () {
@@ -42,7 +45,7 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['./fav']);
   }
 
-  hideBarLink: boolean = false;
+  
   logged: boolean = this.auth.isLogged == false ? this.hideBarLink = false : this.hideBarLink = true;
 
   logout() {
