@@ -4,6 +4,8 @@ import { AuthService } from '../../service/auth.service';
 import { firestore } from 'firebase';
 import { Product } from '../../models/product';
 import { getProducts } from '../order/getProductList';
+import { CartProduct } from 'src/app/models/cart-product';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-order',
@@ -20,6 +22,9 @@ export class OrderComponent implements OnInit {
   gaskets: Product[] = [];
   sweets: Product[] = [];
   drinks: Product[] = [];
+  cart: CartProduct[] = [];
+  u: User;
+  emailUser: string = this.auth.currentUserEmail();
 
   constructor(
     private auth: AuthService,
@@ -58,6 +63,16 @@ export class OrderComponent implements OnInit {
     firestore().collection('products').doc('specialitie').get().then( (snapshot) => {
       getProducts(snapshot.data(),this.specialities);
     });
+
+    this.auth.getUser(this.emailUser).subscribe(
+      (users: User[]) => {
+        for (this.u of users) {
+          if (this.u.email === this.emailUser){
+            this.cart = this.u.products;
+          }
+        }
+      }
+    );
   }
 
   status : boolean = false;
@@ -101,6 +116,28 @@ export class OrderComponent implements OnInit {
 
   closeCart() {
     this.hidePopupCart = false;
+  }
+
+  productList: CartProduct[] = [];
+  key: any = -1;
+ 
+  addProductCart(product: Product) {
+      
+    this.key = this.cart.findIndex(elem => elem.name == product.name);
+    if (this.key != -1) {
+      this.cart[this.key].quantity = this.cart[this.key].quantity + 1;
+      this.cart[this.key].price = this.cart[this.key].quantity * this.cart[this.key].price;
+      this.auth.updateEmptyList();
+      this.auth.updateProductList(this.cart);
+    } else {
+      this.productList.push({
+        name: product.name,
+        price: product.price,
+        quantity: 1
+      });
+      this.auth.updateProductList(this.productList);
+    }
+  
   }
 
 }

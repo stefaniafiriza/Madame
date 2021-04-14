@@ -7,6 +7,7 @@ import { User } from '../models/user';
 import { delay, map } from 'rxjs/operators';
 import * as firebase from 'firebase';
 import { CookieService } from 'ngx-cookie-service';
+import { CartProduct } from '../models/cart-product';
 
 import { auth } from 'firebase/app';
 
@@ -62,6 +63,7 @@ export class AuthService {
     this.angularFireAuth.createUserWithEmailAndPassword(user.email, user.password)
       .then(userCredential => {
         this.newUser = user;
+        this.newUser.photo = this.photo;
         userCredential.user.updateProfile({
           displayName: user.Name
         });
@@ -83,7 +85,7 @@ export class AuthService {
       phone: this.newUser.phone,
       address: this.newUser.address,
       products: this.newUser.products,
-      photo: this.photo
+      photo: this.newUser.photo
     });
   }
 
@@ -207,6 +209,20 @@ export class AuthService {
     var user = firebase.auth().currentUser;
     this.db.doc(`Users/${user.uid}`).update({
       photo: photo
+    });
+  }
+
+  async updateProductList(productList: CartProduct[]) {
+    var user = firebase.auth().currentUser;
+    this.db.doc(`Users/${user.uid}`).update({
+      products: productList
+    });
+  }
+
+  async updateEmptyList() {
+    var user = firebase.auth().currentUser;
+    this.db.doc(`Users/${user.uid}`).update({
+      products: []
     });
   }
 }
