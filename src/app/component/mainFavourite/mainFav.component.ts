@@ -4,12 +4,14 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { database, firestore } from 'firebase';
 import { AuthService } from 'src/app/service/auth.service';
 import { FavFood } from '../sablonFood/favFood';
+import { elementAt } from 'rxjs/operators';
 @Component({
   selector: 'app-favourites',
-  templateUrl: './favourites.component.html',
-  styleUrls: ['../../nav.css','./favourites.component.css']
+  templateUrl: './mainFav.component.html',
+  styleUrls: ['../../nav.css',
+'../favourites/favourites.component.css']
 })
-export class FavouritesComponent implements OnInit {
+export class MainFavComponent implements OnInit {
 
   productList : FavFood[] = [
   //    {name:"Salad",photo:"assets\\image\\food6.png",description: "Extra fresh salad.",rating: 5},
@@ -17,6 +19,9 @@ export class FavouritesComponent implements OnInit {
   // {name:"Chicken",photo:"assets\\image\\food1.png",description: "Honey glazed chicken",rating: 4.8}
 
 ]
+productListName: String[]= [
+    "pizza","drinks"
+];
 
   databaseRef: database.Reference;
   
@@ -30,9 +35,24 @@ export class FavouritesComponent implements OnInit {
  
 
   ngOnInit(): void {
-    firestore().collection('products').doc('products').get().then( (snapshot) => {
-      this.snapshotToStaffArray(snapshot.data());
-    })
+          
+  }
+
+  populate(i : number) : void {
+     
+    if(i==0){
+
+        firestore().collection('products').doc('pizza').get().then( (snapshot) => {
+            this.snapshotToStaffArray(snapshot.data());
+        })
+    }
+    else if(i==1){
+
+        firestore().collection('products').doc('drink').get().then( (snapshot) => {
+            this.snapshotToStaffArray(snapshot.data());
+        })
+    }
+      
   }
 
   snapshotToStaffArray(snapshot: firestore.DocumentData){

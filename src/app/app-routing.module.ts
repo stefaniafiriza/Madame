@@ -17,6 +17,8 @@ import { RevFormComponent } from '../app/component/reviewForm/revForm.component'
 import { ContactFormComponent } from '../app/component/contact-form/contact-form.component';
 import { AuthGuard } from './auth.guard';
 import { OrderComponent } from '../app/component/order/order.component';
+import {MainFavComponent} from '../app/component/mainFavourite/mainFav.component';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -31,7 +33,9 @@ const routes: Routes = [
   { path: 'review', component: ReviewComponent },
   { path: 'rev', component: RevFormComponent },
   { path: 'contact', component: ContactFormComponent },
-  { path: 'order', component: OrderComponent, canActivate: isDevMode() ? [] : [AuthGuard] }
+  { path: 'order', component: OrderComponent, canActivate: isDevMode() ? [] : [AuthGuard] },
+  { path: 'order', component: OrderComponent},
+  { path: 'mainFav', component: MainFavComponent}
 ];
 
 @NgModule({

@@ -31,6 +31,7 @@ import { ContactFormComponent } from './component/contact-form/contact-form.comp
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { OrderComponent } from './component/order/order.component';
 import { CartComponent } from './component/cart/cart.component';
+import { MainFavComponent} from './component/mainFavourite/mainFav.component'
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { CartComponent } from './component/cart/cart.component';
     RevFormComponent,
     ContactFormComponent,
     OrderComponent,
-    CartComponent
+    CartComponent,
+    MainFavComponent
   ],
   imports: [
     FormsModule,
