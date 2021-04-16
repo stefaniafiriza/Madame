@@ -58,7 +58,7 @@ export class TeamComponent implements OnInit {
     this.router.navigate(['/login']);
   }
   sendFav(){
-    this.router.navigate(['/fav']);
+    this.router.navigate(['/mainFav']);
   }
   sendReview(){
     this.router.navigate(['./review']);

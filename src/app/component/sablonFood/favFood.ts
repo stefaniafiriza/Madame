@@ -3,5 +3,6 @@ export class FavFood{
     photo : string;
     rating : number;
     description : string;
+    currentCat: string;
     id : string;
 }

@@ -59,7 +59,7 @@ export class RevFormComponent implements OnInit {
     this.router.navigate(['./review']);
   }
   sendFav() {
-    this.router.navigate(['./fav']);
+    this.router.navigate(['./mainFav']);
   }
   sendTeam() {
     this.router.navigate(['./team']);

@@ -29,29 +29,11 @@ export class FavFoodComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // firestore().collection('producs').doc('products').get().then( (snapshot) => {
-    //   this.snapshotToProdArray(snapshot.data());
-    // })
+ 
   }
 
-
-  // snapshotToProdArray(snapshot: firestore.DocumentData){
-
-  //   Object.keys(snapshot).forEach((key)=>{
-  //     let value = snapshot[key];
-  //     this.prodList.push(
-  //       {
-  //         name: value.name,
-  //         photo: value.photo,
-  //         description: value.description,
-  //         rating: value.rating,
-  //       }
-  //     )
-  //   });
-  // }
   voteProduct()
   {
-
     let vote = this.stars.value;
     let s=this.favFood.rating
     s=(s+vote)/2
@@ -61,12 +43,10 @@ export class FavFoodComponent implements OnInit {
       description: this.favFood.description,
       photo:this.favFood.photo,
       rating: this.favFood.rating,
+      currentCat: this.favFood.currentCat,
       id: this.favFood.id,
     };
-    console.log(fav.id)
-
- 
-
+  
     const update: any = {};
     update[fav.id] = {
       ...fav,
@@ -75,7 +55,7 @@ export class FavFoodComponent implements OnInit {
       
 
 
-      firestore().collection('products').doc('products').update(update).finally(() => {
+      firestore().collection('products').doc(this.favFood.currentCat).update(update).finally(() => {
         this.mdlSampleIsOpen=false;
       })
 

@@ -63,7 +63,7 @@ export class ReviewComponent implements OnInit {
     this.router.navigate(['/login']);
   }
   sendFav(){
-    this.router.navigate(['../fav']);
+    this.router.navigate(['../mainFav']);
   }
   sendTeam(){
     this.router.navigate(['/team']);

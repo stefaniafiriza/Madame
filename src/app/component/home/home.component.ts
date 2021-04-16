@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
   }
 
   sendFav(){
-    this.router.navigate(['./fav']);
+    this.router.navigate(['./mainFav']);
   }
 
   

@@ -11,9 +11,20 @@
     </div>
 
     <div class="moto">
-        <h1>Don't know what to eat? We got you!</h1>
+        <h1>Vote your favourite products!</h1>
     </div>
 
+    <div class="btn-bar">
+    <button class="button" (click)="populate('drink')">Drinks</button>
+    <button class="button" (click)="populate('gasket')">Gasket</button>
+    <button class="button" (click)="populate('meat')">Meat</button>
+    <button class="button" (click)="populate('pasta')">Pasta</button>
+    <button class="button" (click)="populate('pizza')">Pizza</button>
+    <button class="button" (click)="populate('soup')">Soup</button>
+    <button class="button" (click)="populate('specialitie')">Specialities</button>
+    <button class="button" (click)="populate('sweet')">Sweet</button>
+    </div>
+   
     <div class="favFood">
 
         <ul >
@@ -23,7 +34,4 @@
           </ul> 
         
     </div>
-    <button (click)="populate(1)">Drinks</button>
-    <button (click)="populate(0)">Pizza</button>
-   
 </body>

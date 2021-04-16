@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router'
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
+import {
+  AngularFirestore,
+  AngularFirestoreDocument,
+} from '@angular/fire/firestore';
 import { database, firestore } from 'firebase';
 import { AuthService } from 'src/app/service/auth.service';
 import { FavFood } from '../sablonFood/favFood';
@@ -8,89 +11,82 @@ import { elementAt } from 'rxjs/operators';
 @Component({
   selector: 'app-favourites',
   templateUrl: './mainFav.component.html',
-  styleUrls: ['../../nav.css',
-'../favourites/favourites.component.css']
+  styleUrls: ['../../nav.css', './mainFav.component.css'],
 })
 export class MainFavComponent implements OnInit {
+  productList: FavFood[] = [];
+  
+  cache: Map<string, FavFood[]> = new Map();
 
-  productList : FavFood[] = [
-  //    {name:"Salad",photo:"assets\\image\\food6.png",description: "Extra fresh salad.",rating: 5},
-  // {name:"Burger",photo:"assets\\image\\burger.png",description: "A very tasty burger",rating: 4.95},
-  // {name:"Chicken",photo:"assets\\image\\food1.png",description: "Honey glazed chicken",rating: 4.8}
-
-]
-productListName: String[]= [
-    "pizza","drinks"
-];
 
   databaseRef: database.Reference;
-  
 
-  constructor(
-    private router: Router,
-    private auth: AuthService
-  ) { }
-
- 
- 
+  constructor(private router: Router, private auth: AuthService) {}
 
   ngOnInit(): void {
-          
+    this.populate('drink')
   }
 
-  populate(i : number) : void {
-     
-    if(i==0){
+  populate(nume: string): void {
 
-        firestore().collection('products').doc('pizza').get().then( (snapshot) => {
-            this.snapshotToStaffArray(snapshot.data());
-        })
+    this.productList = []
+  
+    if(this.cache.has(nume))
+    {
+      this.productList = this.cache.get(nume);
+      return;
     }
-    else if(i==1){
 
-        firestore().collection('products').doc('drink').get().then( (snapshot) => {
-            this.snapshotToStaffArray(snapshot.data());
-        })
-    }
-      
+    firestore()
+      .collection('products')
+      .doc(nume)
+      .get()
+      .then((snapshot) => {
+        this.snapshotToStaffArray(nume, snapshot.data());
+      });
   }
 
-  snapshotToStaffArray(snapshot: firestore.DocumentData){
 
-    Object.keys(snapshot).forEach((key)=>{
+
+  
+  snapshotToStaffArray(nume:string, snapshot: firestore.DocumentData) {
+    Object.keys(snapshot).forEach((key) => {
       let value = snapshot[key];
-      this.productList.push(
-        {
-          name: value.name,
-          photo: value.photo,
-          description: value.description,
-          rating: value.rating, 
-          id: key
-        }
-      )
+      this.productList.push({
+        name: value.name,
+        photo: value.photo,
+        description: value.description,
+        rating: value.rating,
+        currentCat: nume,
+        id: key,
+      });
     });
+
+    this.cache.set(nume,this.productList);
   }
 
-
-  sendHome(){
+  sendHome() {
     this.router.navigate(['../home']);
   }
-  sendRegister () {
+  sendRegister() {
     this.router.navigate(['/register']);
   }
 
-  sendLogin () {
+  sendLogin() {
     this.router.navigate(['/login']);
   }
-  sendTeam(){
+  sendTeam() {
     this.router.navigate(['./team']);
   }
-  sendReview(){
+  sendReview() {
     this.router.navigate(['./review']);
   }
 
   hideBarLink: boolean = false;
-  logged: boolean = this.auth.isLogged == false ? this.hideBarLink = false : this.hideBarLink = true;
+  logged: boolean =
+    this.auth.isLogged == false
+      ? (this.hideBarLink = false)
+      : (this.hideBarLink = true);
 
   logout() {
     this.auth.logout();

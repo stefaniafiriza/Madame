@@ -45,6 +45,7 @@ export class FavouritesComponent implements OnInit {
           photo: value.photo,
           description: value.description,
           rating: value.rating, 
+          currentCat: value.currentCat,
           id: key
         }
       )

@@ -3,5 +3,6 @@ export class Food{
     photo : string;
     rating : number;
     description : string;
+    currentCat: string;
     id:string
 }
