@@ -36,12 +36,12 @@ export class TeamComponent implements OnInit {
       this.teamList.push(
         {
           name: value.name,
-          link : value.link,
           photo: value.photo,
           description: value.description,
           rating: value.rating,
-          booked: value.booked,
-          plus: value.plus
+          plus: value.plus,
+          rez: value.rez,
+          id: key
         }
       )
     });

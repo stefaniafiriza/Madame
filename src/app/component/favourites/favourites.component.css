@@ -8,7 +8,7 @@ body {
     font-family: 'Muli', sans-serif;
     color: white;
     background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65),rgba(0,0,0,0.38),rgba(0,0,0,0)),
-    url(../../../assets/image/foodd.jpg)no-repeat center center fixed;
+    url("/assets/image/foodd.jpg")no-repeat center center fixed;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;

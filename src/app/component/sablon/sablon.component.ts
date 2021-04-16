@@ -22,13 +22,14 @@ export class StaffComponent implements OnInit {
   sampleIsOpen : boolean = false;
 
   user: User | null = null;
-
-
+  
+  rezervari:BookChef[]=[];
+  
   address = new FormControl('')
   date = new FormControl('')
   name = new FormControl('')
   phone = new FormControl('')
-
+  
   constructor(
     private router: Router
     ) {}
@@ -41,22 +42,41 @@ export class StaffComponent implements OnInit {
   
  
     book() {
-      let bookChef: BookChef = {
+
+      const bookChef: BookChef = {
         name: this.user !== null ? this.user.Name : this.name.value,
         date: this.date.value,
         address: this.address.value,
         phone: this.phone.value,
-        id: uuid(),
       };
   
+      this.rezervari.push(bookChef);
+
+      this.staff.rez=bookChef;
+      let book: Staff={
+        name: this.staff.name,
+        description: this.staff.description,
+        rez: this.rezervari,
+        plus: this.staff.plus,
+        photo: this.staff.photo,
+        rating: this.staff.rating,
+        id: this.staff.id,
+      };
+     
+
+
       const update: any = {};
-      update[bookChef.id] = {
-        ...bookChef,
+      update[book.id] = {
+        ...book,
       };
       
-      delete update[bookChef.id].id;
+      delete update[book.id].id;
       
-      firestore().collection('site').doc('book').update(update).finally(() => {
+
+     
+      firestore().collection('site').doc('chefs').update(
+       update
+      ).finally(() => {
         this.sampleIsOpen = false;
       })
       

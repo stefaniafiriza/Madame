@@ -53,15 +53,15 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">{{staff.name}}'s details</h4>
+        <h4 class="modal-title">Book {{staff.name}}</h4>
       </div>
       <div class="modal-body">
 
-        
+        <h1>Book {{staff.name}} now! </h1>        
         <br>
         <form action="book()">
-                    
-          <br>
+          <br>     
+        
           <div class="input-icons">
               <i class="fa fa-user icon"></i>
               <input class="log-reg" type="text" placeholder="Name" name="name" *ngIf="user !== null" [(ngModel)]="user.Name" required>
@@ -75,29 +75,30 @@
               <input class="log-reg" type="text" [formControl]="address" placeholder="Your address" name="date"  required>
           </div>
           
+          
           <br>
           <div action="/action_page.php" class="input-icons">
               <i class="fa fa-calendar icon"></i>
               <input class="log-reg" type="date" [formControl]="date" placeholder="The date you want this chef to come" name="date"  required>
           </div>
           
+       
           <br>
-          
           <div class="input-icons">
               <i class="fa fa-phone icon"></i>
               <input class="log-reg" type="number" [formControl]="phone" pattern="[0-9]{10}" placeholder="Phone number" name="phone"  required>
           </div>
-          
+          <br>
           <br>
           <button class="submitButton" type="button" (click)="book()">Book</button>
-          
+          <br>
+          <br>
+          <br>
       </form>
         </div>
       <div class="modal-footer" align="right">
-        
-        <button type="button" id="btnOK" class="btn btn-success" (click)="sendBookchef()"><i
-            class="fa fa-check fa-fw"></i>Book this chef</button>
-        <button type="button" id="btnClose" class="btn btn-danger" (click)="openModalNou(false)"><i
+       
+          <button type="button" id="btnClose" class="btn btn-danger" (click)="openModalNou(false)"><i
             class="fa fa-times fa-fw"></i> Cancel</button>
       </div>
     </div>

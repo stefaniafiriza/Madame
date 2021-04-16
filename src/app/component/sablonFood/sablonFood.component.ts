@@ -55,7 +55,7 @@ export class FavFoodComponent implements OnInit {
     let vote = this.stars.value;
     let s=this.favFood.rating
     s=(s+vote)/2
-    {this.favFood.rating=s}
+    this.favFood.rating=s
     let fav : Food={
       name: this.favFood.name,
       description: this.favFood.description,
@@ -65,17 +65,13 @@ export class FavFoodComponent implements OnInit {
     };
     console.log(fav.id)
 
-  //   firestore().collection("test")
-  //   .doc(fav.id)
-  // .update({
-  //   "rating": 13
-  // });
+ 
 
     const update: any = {};
-      update[fav.id] = {
-        ...fav,
-      };
-      delete update[fav.id].id;
+    update[fav.id] = {
+      ...fav,
+    };
+    delete update[fav.id].id;
       
 
 
