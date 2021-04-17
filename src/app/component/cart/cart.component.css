@@ -52,6 +52,24 @@
     line-height: 15.4px;
 }
 
+hr {
+    margin-top: 35px;
+    height: 3px;
+    color: black;
+    background-color: black;
+}
+
+.empty-cart {
+    margin-top: 25px;
+}
+
+.empty-cart h3 {
+    font-size: 25px;
+    font-variant: normal; 
+    font-weight: 700; 
+    line-height: 15.4px;
+}
+
 .table {
     margin-top: 80px;
     border-collapse: collapse;
@@ -105,4 +123,14 @@ tr:nth-child(even) {
 .sendOrder:hover {
     opacity: 1;
     outline: none;
+}
+
+.fa-minus {
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.fa-plus {
+    margin-left: 5px;
+    cursor: pointer;
 }

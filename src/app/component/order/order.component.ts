@@ -120,12 +120,14 @@ export class OrderComponent implements OnInit {
 
   productList: CartProduct[] = [];
   key: any = -1;
+  numberItems: number = 0;
  
   addProductCart(product: Product) {
       
     this.key = this.cart.findIndex(elem => elem.name == product.name);
     if (this.key != -1) {
       this.cart[this.key].quantity = this.cart[this.key].quantity + 1;
+      this.numberItems += 1;
       this.cart[this.key].price = this.cart[this.key].quantity * this.cart[this.key].price;
       this.auth.updateEmptyList();
       this.auth.updateProductList(this.cart);
@@ -135,6 +137,7 @@ export class OrderComponent implements OnInit {
         price: product.price,
         quantity: 1
       });
+      this.numberItems += 1;
       this.auth.updateProductList(this.productList);
     }
   
