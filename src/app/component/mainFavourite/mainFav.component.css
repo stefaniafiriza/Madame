@@ -21,16 +21,43 @@ body {
     margin: auto;
     width:50%;
     padding: 10px;
-    margin-bottom: 150px;
+    margin-bottom: 50px;
 }
 
 .moto h1{
-    color: while;
+    color: white;
     font-family: 'Muli', sans-serif;
     padding: 100px;
     width: 1000px;
-    height: 200px;
+    height: 100px;
     text-align: center;   
+}
+
+.btn-bar  {
+    float: inline-start;
+    margin-left: 200px;
+    border: 1px solid none;
+    padding-top: 50px;
+    padding-left: 125px;
+}
+
+.btn-bar  ul li {
+    cursor: pointer;
+    float: left;
+    text-align: center;
+    margin: 30px, 1px;
+    width: 150px;
+}
+
+.btn-bar  ul li a {
+    text-decoration: none;
+    color: darkgray;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.btn-bar  ul li a:hover {
+    text-transform: uppercase;
 }
 .favFood {
     margin: auto;
@@ -39,7 +66,7 @@ body {
 }
 .favFood li{
     display: inline-block;
-    padding: 10px;
+    padding: 15px;
 }
 .button {
     background-color: #1e241e; 
@@ -61,13 +88,3 @@ body {
    background-color: #1c1c6e; 
 }
 
-.btn-bar {
-    float: center;
-    display: inline;
-    margin-left: 25px;
-    border: 1px solid none;
-    max-width: 488px;
-}
-.btn-bar button{
-    width: 12%;
-}

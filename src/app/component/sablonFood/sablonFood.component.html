@@ -32,6 +32,7 @@
           </svg></h4>
        <br>
        <hr>
+       <h4>Your vote:</h4>
           <div class="star">
             <input class="log" type="number" [formControl]="stars" pattern="[0-5]{1}" placeholder="Stars" name="stars"  required><svg height="30" xmlns="http://www.w3.org/2000/svg" fill="all" viewBox="0 0 24 24"
             stroke="currentColor">
@@ -45,7 +46,7 @@
       <div class="modal-footer" align="right">
         <br>
         <br>
-        <button type="button" id="btnOK" class="btn btn-success" (click)=voteProduct()><i
+        <button type="button" id="btnOK" class="btn btn-success" *ngIf="!hideBarLink" (click)=voteProduct()><i
             class="fa fa-check fa-fw"></i>Vote!</button>
         <button type="button" id="btnClose" class="btn btn-danger" (click)="openModal(false)"><i
             class="fa fa-times fa-fw"></i> Cancel</button>

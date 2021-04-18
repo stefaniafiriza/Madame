@@ -37,7 +37,7 @@
       </div>
       <div class="modal-footer" align="right">
         
-        <button type="button" id="btnOK" class="btn btn-success" (click)="sendBookchef()"><i
+        <button type="button" id="btnOK" class="btn btn-success" *ngIf="!hideBarLink" (click)="sendBookchef()"><i
             class="fa fa-check fa-fw"></i>Book this chef</button>
         <button type="button" id="btnClose" class="btn btn-danger" (click)="openModal(false)"><i
             class="fa fa-times fa-fw"></i> Cancel</button>
@@ -57,7 +57,7 @@
       </div>
       <div class="modal-body">
 
-        <h1>Book {{staff.name}} now! </h1>        
+             
         <br>
         <form action="book()">
           <br>     

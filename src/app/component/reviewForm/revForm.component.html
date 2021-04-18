@@ -26,7 +26,7 @@
                     
                 </div>
                 
-                <button class="submitButton" type="button" (click)="review()">Send</button>
+                <button class="submitButton" type="button" *ngIf="!hideBarLink" (click)="review()">Send</button>
                 
             </form>
         

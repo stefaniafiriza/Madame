@@ -68,7 +68,12 @@ export class ReviewComponent implements OnInit {
   sendTeam(){
     this.router.navigate(['/team']);
   }
-
+  sendContact(){
+    this.router.navigate(['./contact']);
+  }
+  sendMenu(){
+    this.router.navigate(['../order']);
+  }
   logout() {
     this.auth.logout();
   }

@@ -5,7 +5,6 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { database, firestore } from 'firebase';
 import { AuthService } from 'src/app/service/auth.service';
 import { FormControl } from '@angular/forms';
-import { v4 as uuid } from 'uuid';
 import { Food } from './food';
 
 @Component({
@@ -70,4 +69,7 @@ export class FavFoodComponent implements OnInit {
   openModal(open : boolean) : void {
     this.mdlSampleIsOpen = open;
   }
+  hideBarLink: boolean = false;
+  logged: boolean = this.auth.isLogged == false ? this.hideBarLink = false : this.hideBarLink = true;
+
 }

@@ -2,11 +2,16 @@
     <div class="nav-bar">
         <ul type="none">
             <li><a (click)="sendHome()">Home</a></li>
-            <li><a><i class='fa fa-user-circle'></i>Profile</a></li>
-            <li><a *ngIf="!hideBarLink" (click)="sendLogin()">Sign in</a></li>
-            <li><a *ngIf="!hideBarLink" (click)="sendRegister()">Sign up</a></li>
+            <li><a *ngIf="hideBarLink" (click) = "sendProfile()"><i class='fa fa-user-circle'></i>Profile</a></li>
+            <li><a *ngIf="hideBarLink" (click) = "sendOrder()">Online order</a></li>
+            <li><a (click)="sendMenu()">Menu</a></li>
             <li><a (click)="sendTeam()">Team</a></li>
+            <li><a (click)="sendContact()">Contact us</a></li>
             <li><a (click)="sendReview()">Reviews</a></li>
+            <li><a  *ngIf="!hideBarLink" (click) = "sendLogin()">Sign in</a></li>
+            <li><a *ngIf="!hideBarLink" (click) = "sendRegister()">Sign up</a></li>
+            <li><a *ngIf="hideBarLink" (click) = "logout()">Logout</a></li>
+     
         </ul>
     </div>
 
@@ -15,18 +20,21 @@
     </div>
 
     <div class="btn-bar">
-    <button class="button" (click)="populate('drink')">Drinks</button>
-    <button class="button" (click)="populate('gasket')">Gasket</button>
-    <button class="button" (click)="populate('meat')">Meat</button>
-    <button class="button" (click)="populate('pasta')">Pasta</button>
-    <button class="button" (click)="populate('pizza')">Pizza</button>
-    <button class="button" (click)="populate('soup')">Soup</button>
-    <button class="button" (click)="populate('specialitie')">Specialities</button>
-    <button class="button" (click)="populate('sweet')">Sweet</button>
+        <ul type="none">
+            <li><a (click)="populate('drink')">Drink</a></li>
+            <li><a (click)="populate('pasta')">Pasta</a></li>
+            <li><a (click)="populate('soup')">Soup</a></li>
+            <li><a (click)="populate('specialitie')">Specialities</a></li>
+            <li><a (click)="populate('meat')" >Meat</a></li>
+            <li><a (click)="populate('gasket')">Gasket</a></li>
+            <li><a (click)="populate('sweet')">Sweets</a></li>
+            <li><a (click)="populate('pizza')">Pizza</a></li>
+        </ul>
     </div>
    
+   
     <div class="favFood">
-
+     
         <ul >
             <li  *ngFor="let favFood of productList">
               <fav-food [favFood]=favFood></fav-food>

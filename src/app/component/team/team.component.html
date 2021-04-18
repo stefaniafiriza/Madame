@@ -2,12 +2,16 @@
     <div class="nav-bar">
         <ul type="none">
             <li><a (click)="sendHome()">Home</a></li>
-            <li><a><i class='fa fa-user-circle'></i>Profile</a></li>
-            <li><a *ngIf="!hideBarLink" (click)="sendLogin()">Sign in</a></li>
-            <li><a *ngIf="!hideBarLink" (click)="sendRegister()">Sign up</a></li>
-            <li><a (click)="sendFav()">Favourites Food</a></li>
+            <li><a *ngIf="hideBarLink" (click) = "sendProfile()"><i class='fa fa-user-circle'></i>Profile</a></li>
+            <li><a *ngIf="hideBarLink" (click) = "sendOrder()">Online order</a></li>
+            <li><a (click)="sendMenu()">Menu</a></li>
+            <li><a (click)="sendContact()">Contact us</a></li>
             <li><a (click)="sendReview()">Reviews</a></li>
-            
+            <li><a (click)="sendFav()">Favourite Food</a></li>
+            <li><a  *ngIf="!hideBarLink" (click) = "sendLogin()">Sign in</a></li>
+            <li><a *ngIf="!hideBarLink" (click) = "sendRegister()">Sign up</a></li>
+            <li><a *ngIf="hideBarLink" (click) = "logout()">Logout</a></li>
+     
         </ul>
     </div>
 

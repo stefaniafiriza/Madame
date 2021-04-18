@@ -50,6 +50,9 @@ export class TeamComponent implements OnInit {
   sendHome(){
     this.router.navigate(['../home']);
   }
+  sendMenu(){
+    this.router.navigate(['../order']);
+  }
   sendRegister () {
     this.router.navigate(['/register']);
   }
@@ -59,6 +62,9 @@ export class TeamComponent implements OnInit {
   }
   sendFav(){
     this.router.navigate(['/mainFav']);
+  }
+  sendContact(){
+    this.router.navigate(['./contact']);
   }
   sendReview(){
     this.router.navigate(['./review']);

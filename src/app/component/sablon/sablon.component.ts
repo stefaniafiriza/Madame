@@ -4,8 +4,9 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { BookChef } from './chef';
 import { Staff } from './staff';
-import { v4 as uuid } from 'uuid';
 import { firestore } from 'firebase';
+import { AuthService } from 'src/app/service/auth.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'personal-staff',
@@ -17,6 +18,7 @@ import { firestore } from 'firebase';
 })
 export class StaffComponent implements OnInit {
   
+  hideBarLink: boolean = false;
   @Input() staff: Staff
   mdlSampleIsOpen : boolean = false;
   sampleIsOpen : boolean = false;
@@ -31,12 +33,16 @@ export class StaffComponent implements OnInit {
   phone = new FormControl('')
   
   constructor(
-    private router: Router
+    private router: Router,
+    private auth: AuthService,
+    private cookie: CookieService
     ) {}
     
-    ngOnInit(): void {
-      
-      
+    ngOnInit(): void {  
+      if (this.cookie.get('usernameCookie').length != 0) {
+        this.auth.isLogged = true;
+        this.hideBarLink = true;
+      }
     }
     
   
@@ -83,26 +89,9 @@ export class StaffComponent implements OnInit {
     }
     
   
-  sendBook(){
-  
-    //     if(this.staff.booked == 0){
+  sendBook(){    
+  }
 
-    //  let result = confirm("Do you want to book this chef?");
-    //   if(result)
-    //   {
-    //     this.staff.booked=1;
-    //     alert(`You booked ${this.staff.name}, he will arive shortly`);
-    //   }
-    //   else
-    //   {
-    //     // RETURN
-    //   }
-    // }
-    // else{
-    //   alert(`This chef has already been booked.`)
-    // }
-    
-}
 openModal(open : boolean) : void {
   this.mdlSampleIsOpen = open;
 }
@@ -119,5 +108,7 @@ sendBookchef() {
 sendHome() {
     this.router.navigate(['../home']);
   }
+
+  logged: boolean = this.auth.isLogged == false ? this.hideBarLink = false : this.hideBarLink = true;
 
 }

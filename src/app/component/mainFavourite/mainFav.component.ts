@@ -81,6 +81,12 @@ export class MainFavComponent implements OnInit {
   sendReview() {
     this.router.navigate(['./review']);
   }
+  sendContact(){
+    this.router.navigate(['./contact']);
+  }
+  sendMenu(){
+    this.router.navigate(['../order']);
+  }
 
   hideBarLink: boolean = false;
   logged: boolean =
