@@ -31,11 +31,12 @@ export class FavFoodComponent implements OnInit {
  
   }
 
-  voteProduct()
+  vote(i: number)
   {
-    let vote = this.stars.value;
+    let vote = i;
+    // this.stars.value;
     let s=this.favFood.rating
-    s=(s+vote)/2
+    s = Number(((s + vote) / 2).toFixed(2));
     this.favFood.rating=s
     let fav : Food={
       name: this.favFood.name,

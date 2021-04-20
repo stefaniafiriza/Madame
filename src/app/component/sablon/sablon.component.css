@@ -10,6 +10,7 @@
  
   .card_team:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    text-transform: uppercase;
   }
   
  
@@ -54,12 +55,16 @@
   
 .button:hover {
   background-color: #19193a; 
+  text-transform: uppercase;
 }
 
 .btn:hover {
   background-color: #19193a; 
+  text-transform: uppercase;
 }
-
+.star{
+  margin-left: 280px;
+}
 .modal-dialog {
   font-family: 'Muli', sans-serif;
   -webkit-transform: translate(0,-50%);

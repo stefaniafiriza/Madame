@@ -12,7 +12,9 @@
   .card_food:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   }
-  
+  .star{
+    margin-left: 140px;
+  }
  
   .continut {
     padding: 2px 16px;
