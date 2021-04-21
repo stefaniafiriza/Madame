@@ -101,6 +101,7 @@ export class AuthService {
             this.password = password;
             this.cookie.set('usernameCookie', email);
             this.cookie.set('passwordCookie', password);
+            this.cookie.set('nameUserCookie', userCredential.user.displayName);
             this.router.navigate(['/home']);
           } else {
             window.alert('Please validate your email address. Kindly check your inbox.');
@@ -139,14 +140,29 @@ export class AuthService {
   authLogin(provider) {
     return this.angularFireAuth.signInWithPopup(provider)
       .then((userCredential) => {
+        this.updateUserData(userCredential.user);
+        this.cookie.set('usernameCookie', userCredential.user.email);
+        this.cookie.set('nameUserCookie', userCredential.user.displayName);
         this.ngZone.run(() => {
           this.isLogged = true;
           this.router.navigate(['/home']);
         })
-        this.insertUserData(userCredential);
       }).catch((error) => {
         this.eventAuthError.next(error);
       })
+  }
+
+  private updateUserData(user) {
+    const data = { 
+      email: user.email, 
+      displayName: user.displayName, 
+      photo: user.photoURL,
+      phone: 0,
+      address: 'str. Zambilelor',
+      products: [],
+    } 
+
+    return this.db.doc(`Users/${user.uid}`).set(data,{ merge: true });
   }
 
   currentUserName = () => {

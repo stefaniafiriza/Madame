@@ -6,6 +6,7 @@ import { Product } from '../../models/product';
 import { getProducts } from '../order/getProductList';
 import { CartProduct } from 'src/app/models/cart-product';
 import { User } from '../../models/user';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-order',
@@ -24,11 +25,12 @@ export class OrderComponent implements OnInit {
   drinks: Product[] = [];
   cart: CartProduct[] = [];
   u: User;
-  emailUser: string = this.auth.currentUserEmail();
+  emailUser: string = this.cookie.get('usernameCookie');
 
   constructor(
     private auth: AuthService,
-    private router: Router
+    private router: Router,
+    private cookie: CookieService
   ) { }
 
   ngOnInit(): void {
