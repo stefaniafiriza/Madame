@@ -1,0 +1,143 @@
+<div class="body-page">
+    <div class="nav-bar">
+        <ul type="none">
+            <li><a *ngIf="hideBarLink" (click)="sendProfile()"><i class='fa fa-user-circle'></i>
+                    Profile</a></li>
+            <li><a *ngIf="!hideBarLink" (click)="back()">Back</a></li>
+            <li><a *ngIf="hideBarLink" (click)="sendHome()">Home</a></li>
+            <li><a *ngIf="hideBarLink" (click)="sendOnlineOrder()">Online order</a></li>
+            <li><a (click)="sendTeam()">Team</a></li>
+            <li><a (click)="sendContact()">Contact us</a></li>
+            <li><a *ngIf="hideBarLink" (click)="showCart()">Cart</a></li>
+            <li><a *ngIf="hideBarLink" (click)="logout()">Logout</a></li>
+        </ul>
+    </div>
+
+
+    <div class="title">
+        <h3>Madame</h3>
+        <h4>~Daily menu~</h4>
+    </div>
+
+    <div class="type-dish">
+        <ul type="none">
+            <li><a (click)="showHide(1)">Monday</a></li>
+            <li><a (click)="showHide(2)">Tuesday</a></li>
+            <li><a (click)="showHide(3)">Wednesday</a></li>
+            <li><a (click)="showHide(4)">Thursday</a></li>
+            <li><a (click)="showHide(5)">Friday</a></li>
+
+        </ul>
+    </div>
+
+    <hr>
+
+    <div class="products__container" id="course1">
+        <table>
+            <ng-container>
+                <tr>
+                    <td>
+                        <img class="product__image" />
+                    </td>
+                    <td>
+                        <strong class="product__title">product.name </strong>
+                        <p class="product_description">product.description</p>
+                        <em class="product__price">product.price</em>
+                    </td>
+                    <td>
+                        <button class="put_in_cart"><i
+                            class="fa fa-shopping-basket"></i></button>
+                    </td>
+                </tr>
+            </ng-container>
+        </table>
+    </div>
+
+    <div class="products__container" id="course2">
+        <table>
+            <ng-container>
+                <tr>
+                    <td>
+                        <img class="product__image" />
+                    </td>
+                    <td>
+                        <strong class="product__title">product.name</strong>
+                        <p class="product_description">product.description</p>
+                        <em class="product__price">product.price</em>
+                    </td>
+                    <td>
+                        <button class="put_in_cart"><i
+                                class="fa fa-shopping-basket"></i></button>
+                    </td>
+                </tr>
+            </ng-container>
+        </table>
+    </div>
+
+    <div class="products__container" id="course3">
+        <table>
+            <ng-container>
+                <tr>
+                    <td>
+                        <img class="product__image"/>
+                    </td>
+                    <td>
+                        <strong class="product__title"> product.name</strong>
+                        <p class="product_description"> product.description</p>
+                        <em class="product__price"> product.price</em>
+                    </td>
+                    <td>
+                        <button class="put_in_cart"><i
+                            class="fa fa-shopping-basket"></i></button>
+                    </td>
+                </tr>
+            </ng-container>
+        </table>
+    </div>
+
+    <div class="products__container" id="course4">
+        <table>
+            <ng-container>
+                <tr>
+                    <td>
+                        <img class="product__image"/>
+                    </td>
+                    <td>
+                        <strong class="product__title"> product.name</strong>
+                        <p class="product_description"> product.description</p>
+                        <em class="product__price"> product.price</em>
+                    </td>
+                    <td>
+                        <button class="put_in_cart"><i
+                                class="fa fa-shopping-basket"></i></button>
+                    </td>
+                </tr>
+            </ng-container>
+        </table>
+    </div>
+
+    <div class="products__container" id="course5">
+        <table>
+            <ng-container>
+                <tr>
+                    <td>
+                        <img class="product__image"/>
+                    </td>
+                    <td>
+                        <strong class="product__title"> product.name</strong>
+                        <p class="product_description"> product.description </p>
+                        <em class="product__price"> product.price</em>
+                    </td>
+                    <td>
+                        <button class="put_in_cart"><i
+                                class="fa fa-shopping-basket"></i></button>
+                    </td>
+                </tr>
+            </ng-container>
+        </table>
+    </div>
+
+
+    <app-cart *ngIf="hidePopupCart" (close)="closeCart()"></app-cart>
+
+</div>

@@ -26,6 +26,10 @@ export class ContactFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.cookie.get('usernameCookie').length != 0) {
+      this.auth.isLogged = true;
+      this.hideBarLink = true;
+    }
   }
 
   name: string = this.cookie.get('nameUserCookie');
@@ -84,6 +88,10 @@ export class ContactFormComponent implements OnInit {
 
   sendOrder () {
     this.router.navigate(['/order']);
+  }
+
+  sendDailyMenu() {
+    this.router.navigate(['/dailymenu']);
   }
 
 }
