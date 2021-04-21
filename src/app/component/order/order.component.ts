@@ -145,4 +145,8 @@ export class OrderComponent implements OnInit {
   
   }
 
+  sendDailyMenu() {
+    this.router.navigate(['/dailymenu']);
+  }
+
 }

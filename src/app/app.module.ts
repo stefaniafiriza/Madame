@@ -31,7 +31,8 @@ import { ContactFormComponent } from './component/contact-form/contact-form.comp
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { OrderComponent } from './component/order/order.component';
 import { CartComponent } from './component/cart/cart.component';
-import { MainFavComponent} from './component/mainFavourite/mainFav.component'
+import { MainFavComponent} from './component/mainFavourite/mainFav.component';
+import { DailymenuComponent } from './component/dailymenu/dailymenu.component'
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { MainFavComponent} from './component/mainFavourite/mainFav.component'
     ContactFormComponent,
     OrderComponent,
     CartComponent,
-    MainFavComponent
+    MainFavComponent,
+    DailymenuComponent
   ],
   imports: [
     FormsModule,

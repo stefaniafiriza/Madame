@@ -18,6 +18,7 @@ import { ContactFormComponent } from '../app/component/contact-form/contact-form
 import { AuthGuard } from './auth.guard';
 import { OrderComponent } from '../app/component/order/order.component';
 import {MainFavComponent} from '../app/component/mainFavourite/mainFav.component';
+import { DailymenuComponent } from '../app/component/dailymenu/dailymenu.component';
 
 
 const routes: Routes = [
@@ -34,7 +35,7 @@ const routes: Routes = [
   { path: 'rev', component: RevFormComponent },
   { path: 'contact', component: ContactFormComponent },
   { path: 'order', component: OrderComponent, canActivate: isDevMode() ? [] : [AuthGuard] },
-  { path: 'order', component: OrderComponent},
+  { path: 'dailymenu', component: DailymenuComponent },
   { path: 'mainFav', component: MainFavComponent}
 ];
 
