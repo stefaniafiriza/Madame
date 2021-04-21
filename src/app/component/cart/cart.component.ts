@@ -6,6 +6,7 @@ import { Product } from '../../models/product';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { OrderComponent } from '../order/order.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-cart',
@@ -16,7 +17,7 @@ export class CartComponent implements OnInit {
 
   cart: CartProduct[] = [];
   u: User;
-  emailUser: string = this.auth.currentUserEmail();
+  emailUser: string = this.cookie.get('usernameCookie');
   totalPrice: number = 0;
   currentUser: any;
 
@@ -24,7 +25,8 @@ export class CartComponent implements OnInit {
     private auth: AuthService,
     private db: AngularFirestore,
     private router: Router,
-    private order: OrderComponent
+    private order: OrderComponent,
+    private cookie: CookieService
   ) { }
 
   ngOnInit(): void {

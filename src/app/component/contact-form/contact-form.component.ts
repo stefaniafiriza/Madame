@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AuthService } from '../../service/auth.service';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-contact-form',
@@ -17,7 +18,8 @@ export class ContactFormComponent implements OnInit {
     private builder: FormBuilder,
     private angularFire: AngularFireDatabase,
     private auth: AuthService,
-    private router: Router
+    private router: Router,
+    private cookie: CookieService
   ) { 
     this.angularFire.list('messages').valueChanges();
     this.createForm(); 
@@ -26,8 +28,8 @@ export class ContactFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  name: string = this.auth.currentUserName();
-  email: string = this.auth.currentUserEmail();
+  name: string = this.cookie.get('nameUserCookie');
+  email: string = this.cookie.get('usernameCookie');
 
   createForm() {
 

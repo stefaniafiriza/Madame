@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {AuthService } from '../../service/auth.service';
+import { AuthService } from '../../service/auth.service';
 import { User } from '../../models/user';
 import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-profile',
@@ -21,7 +22,8 @@ export class ProfileComponent implements OnInit {
   constructor(
     private router: Router,
     private auth: AuthService,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    private cookie: CookieService
   ) { 
     this.user = {
       Name: '',
@@ -35,7 +37,7 @@ export class ProfileComponent implements OnInit {
   }
 
   u: User;
-  emailUser: string = this.auth.currentUserEmail();
+  emailUser: string = this.cookie.get('usernameCookie');
 
   ngOnInit(): void {
     this.auth.getUser(this.emailUser).subscribe(
@@ -49,7 +51,7 @@ export class ProfileComponent implements OnInit {
     );
   }
 
-  name: string = this.auth.currentUserName();
+  name: string = this.cookie.get('nameUserCookie');
   userPassword: string = this.auth.password;
   email: string;
   newPassword: string;
