@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
 import { CookieService } from 'ngx-cookie-service';
+import { getProducts } from '../order/getProductList';
+import { Product } from '../../models/product';
+import { firestore } from 'firebase';
 
 @Component({
   selector: 'app-dailymenu',
@@ -9,6 +12,12 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['../../nav.css','./dailymenu.component.css']
 })
 export class DailymenuComponent implements OnInit {
+
+  date: number;
+  soups: Product[] = [];
+  meats: Product[] = [];
+  gaskets: Product[] = [];
+  price: number = 15;
 
   constructor(
     private router: Router,
@@ -21,6 +30,21 @@ export class DailymenuComponent implements OnInit {
       this.auth.isLogged = true;
       this.hideBarLink = true;
     }
+
+    this.date = new Date().getDay();
+
+    firestore().collection('products').doc('soup').get().then( (snapshot) => {
+      getProducts(snapshot.data(),this.soups);
+    });
+
+    firestore().collection('products').doc('meat').get().then( (snapshot) => {
+      getProducts(snapshot.data(),this.meats);
+    });
+
+    firestore().collection('products').doc('gasket').get().then( (snapshot) => {
+      getProducts(snapshot.data(),this.gaskets);
+    });
+
   }
 
   hideBarLink: boolean = false;
