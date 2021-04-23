@@ -8,6 +8,7 @@
             <li><a (click)="sendContact()">Contact us</a></li>
             <li><a (click)="sendFav()">Favourites Food</a></li>
             <li><a (click)="sendReview()">Reviews</a></li>
+            <li><a (click)="sendCareer()">Career</a></li>
             <li><a  *ngIf="!hideBarLink" (click) = "sendLogin()">Sign in</a></li>
             <li><a *ngIf="!hideBarLink" (click) = "sendRegister()">Sign up</a></li>
             <li><a *ngIf="hideBarLink" (click) = "logout()">Logout</a></li>
@@ -25,7 +26,7 @@
 
         <div class="reserve_btn">
             <form action="">
-                <input type="button" value="Start Now">
+                <input type="button"(click)="sendTeam()" value="Start Now">
             </form>
         </div>
     </div>

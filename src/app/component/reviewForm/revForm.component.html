@@ -25,12 +25,16 @@
                     <input class="log-reg" type="number" max="5" min="0" [formControl]="stars" placeholder="Stars (between 1 and 5)" name="review"  required>
                     
                 </div>
-                
-                <button class="submitButton" type="button" *ngIf="!hideBarLink" (click)="review()">Send</button>
+                <div class="but">
+<br>
+                    <button class="submitButton" type="button" *ngIf="!hideBarLink" (click)="review()">Send</button>
+                </div>
                 
             </form>
-        
+        <div class="but">
+
             <button class="backButton" (click)="sendReview()">Back</button>
+        </div>
         </div>
     </div>
     

@@ -2,9 +2,7 @@
   <img src={{staff.photo}} alt="Avatar" style="width:100%">
   <div class="continut">
     <h4><b>{{staff.name}}</b></h4>
-    
-
-    <button class="button" (click)="openModal(true)">Details!</button>
+    <button class="buton" (click)="openModal(true)">Details!</button>
       
   </div>
 </div>
@@ -15,13 +13,15 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title">{{staff.name}}'s details</h4>
+        <i class="closen" (click)="openModal(false)"><svg xmlns="http://www.w3.org/2000/svg" width="56" height="36" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+          <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+          <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+        </svg></i>
       </div>
       <div class="modal-body">
         <p >Brief description:</p>
-        
         <p >{{staff.description}}</p>
-        <br>
-        <hr>
+        <br><hr>
         <p>Stars:</p>
         <h4><b>{{staff.rating}}</b><svg height="30" xmlns="http://www.w3.org/2000/svg" fill="all" viewBox="0 0 24 24"
             stroke="currentColor">
@@ -34,14 +34,11 @@
         <p>{{staff.plus}}</p>
       </div>
       <div class="modal-footer" align="right">
-        
-        <button type="button" id="btnOK" class="btn btn-success" *ngIf="!hideBarLink" (click)="sendBookchef()"><i
+        <button type="button" id="btnOK" class="button" *ngIf="!hideBarLink" (click)="sendBookchef()"><i
             class="fa fa-check fa-fw"></i>Book this chef</button>
-        <button type="button" id="btnOK" class="btn btn-secondary" *ngIf="!hideBarLink" (click)="openModalVote(true)"><i
+        <button type="button" id="btnOK" class="buton" *ngIf="!hideBarLink" (click)="openModalVote(true)"><i
               class="fa fa-check fa-fw"></i>Vote chef</button>
-         
-        <button type="button" id="btnClose" class="btn btn-danger" (click)="openModal(false)"><i
-            class="fa fa-times fa-fw"></i> Cancel</button>
+      <br>
       </div>
     </div>
   </div>
@@ -55,6 +52,16 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title">Book {{staff.name}}</h4>
+        <!-- <i class="back" (click)="openModal(true)"><svg xmlns="http://www.w3.org/2000/svg" width="56" height="36" fill="currentColor" class="bi bi-arrow-bar-left" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M12.5 15a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5zM10 8a.5.5 0 0 1-.5.5H3.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L3.707 7.5H9.5a.5.5 0 0 1 .5.5z"/>
+        </svg></i> -->
+        <i class="back" (click)="openModal(true)"><svg xmlns="http://www.w3.org/2000/svg" width="56" height="36" fill="currentColor" class="bi bi-arrow-left-square" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm11.5 5.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+        </svg></i>
+        <i class="closen" (click)="openModalNou(false)"><svg xmlns="http://www.w3.org/2000/svg" width="56" height="36" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+          <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+          <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+        </svg></i>
       </div>
       <div class="modal-body">
 
@@ -83,24 +90,19 @@
               <input class="log-reg" type="date" [formControl]="date" placeholder="The date you want this chef to come" name="date"  required>
           </div>
           
-       
           <br>
           <div class="input-icons">
               <i class="fa fa-phone icon"></i>
               <input class="log-reg" type="number" [formControl]="phone" pattern="[0-9]{10}" placeholder="Phone number" name="phone"  required>
           </div>
-          <br>
-          <br>
-          <button class="submitButton" type="button" (click)="book()">Book</button>
-          <br>
-          <br>
-          <br>
+          <br><br><br><br>
       </form>
         </div>
       <div class="modal-footer" align="right">
        
-          <button type="button" id="btnClose" class="btn btn-danger" (click)="openModalNou(false)"><i
-            class="fa fa-times fa-fw"></i> Cancel</button>
+        <button type="button" id="btnOK" class="button" *ngIf="!hideBarLink" (click)="book()"><i
+          class="fa fa-check fa-fw"></i>Book chef</button>
+   <br>
       </div>
     </div>
   </div>
@@ -116,6 +118,10 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title"> {{staff.name}}'s details</h4>
+        <i class="closen" (click)="openModalVote(false)"><svg xmlns="http://www.w3.org/2000/svg" width="56" height="36" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+          <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+          <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+        </svg></i>
       </div>
       <div class="modal-body">
         <p>Stars:</p>
@@ -127,7 +133,7 @@
           <br>
         <hr>
        <h4>Your vote:</h4>
-          <div class="star">
+          <div class="star"  data-bs-toggle="tooltip" data-bs-placement="top" title="Choose your rating!">
             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
               <div class="btn-group mr-2" role="group" aria-label="First group">
                 <button type="button" class="btn btn-secondary" (click)="vote(1)">
@@ -161,8 +167,6 @@
       <div class="modal-footer" align="right">
         <br>
         <br>
-        <button type="button" id="btnClose" class="btn btn-danger" (click)="openModalVote(false)"><i
-            class="fa fa-times fa-fw"></i> Cancel</button>
       </div>
     </div>
   </div>

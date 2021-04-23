@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 import { CommonModule } from '@angular/common'
-
 import { Review } from './review';
 import { firestore } from 'firebase';
 @Component({
@@ -48,17 +47,17 @@ export class ReviewComponent implements OnInit {
     this.reviews.shift();
   }
 
-  openPage(id){
-
-  }
+ 
 
   sendHome(){
-    this.router.navigate(['../home']);
+    this.router.navigate(['../']);
   }
   sendRegister () {
     this.router.navigate(['/register']);
   }
-
+  sendCareer(){
+    this.router.navigate(['/join']);
+  }
   sendLogin () {
     this.router.navigate(['/login']);
   }
@@ -72,7 +71,7 @@ export class ReviewComponent implements OnInit {
     this.router.navigate(['./contact']);
   }
   sendMenu(){
-    this.router.navigate(['../order']);
+    this.router.navigate(['../dailymenu']);
   }
   logout() {
     this.auth.logout();
@@ -85,5 +84,9 @@ export class ReviewComponent implements OnInit {
   nextReview()
   {
     this.currentReview=(this.currentReview+1)%this.reviews.length;
+ }
+ prevReview()
+  {
+    this.currentReview=(this.currentReview-1)%this.reviews.length;
  }
 }

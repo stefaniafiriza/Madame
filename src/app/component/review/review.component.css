@@ -46,47 +46,66 @@ body {
    padding: 25px 50px 75px 100px;
    background-image: linear-gradient(to bottom right, rgb(88, 76, 76), rgb(0, 0, 0));
    background: rgba(52, 59, 52, 0.3);
-
    border: 15px solid rgb(24, 20, 20);
-   margin-left: 25%;
+   margin-left: 20%;
    margin-right: auto;
    border-radius: 15px 50px;
-   /* width: 60%;  */
-   
    max-width: 1000px;
-
    position: absolute;
    top: 30%;
-  
+   width: 100%;
    text-align: center;
    font-size: 18px;
-
-  
 }
 
 .tabcontent p{
   font-style: italic;
   font-size: 30px;
- 
 }
 
 .tabcontent button{
   background-color: #000000;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    transform: translate(-50%,-50%);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  transform: translate(-50%,-50%);
     margin-top: 10px;
     margin-left: 700px;
     cursor: pointer;
     border-radius: 12px;
     transition-duration: 0.4s;
-
 }
 
 .tabcontent button:hover {
   background-color: #19193a; 
+}
+.tabcontent a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 15px 26px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.tabcontent a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #201f1f;
+  color: rgb(255, 255, 255);
+  margin-right: 100px;
+}
+
+.next {
+  background-color: #201f1f;
+  color: white;
+}
+
+.round {
+  border-radius: 50%;
 }

@@ -44,7 +44,9 @@ export class HomeComponent implements OnInit {
   sendFav(){
     this.router.navigate(['./mainFav']);
   }
-
+  sendCareer(){
+    this.router.navigate(['../join']);
+  }
   
   logged: boolean = this.auth.isLogged == false ? this.hideBarLink = false : this.hideBarLink = true;
 

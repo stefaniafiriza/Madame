@@ -101,11 +101,16 @@ export class OrderComponent implements OnInit {
   sendContact() {
     this.router.navigate(['/contact']);
   }
+  sendFav() {
+    this.router.navigate(['/mainFav']);
+  }
 
   logout() {
     this.auth.logout();
   }
-
+  sendCareer(){
+    this.router.navigate(['../join']);
+  }
   sendTeam() {
     this.router.navigate(['../team']);
   }

@@ -19,6 +19,7 @@ import { AuthGuard } from './auth.guard';
 import { OrderComponent } from '../app/component/order/order.component';
 import {MainFavComponent} from '../app/component/mainFavourite/mainFav.component';
 import { DailymenuComponent } from '../app/component/dailymenu/dailymenu.component';
+import { JoinComponent } from './component/join/join.component';
 
 
 const routes: Routes = [
@@ -36,7 +37,9 @@ const routes: Routes = [
   { path: 'contact', component: ContactFormComponent },
   { path: 'order', component: OrderComponent, canActivate: isDevMode() ? [] : [AuthGuard] },
   { path: 'dailymenu', component: DailymenuComponent },
-  { path: 'mainFav', component: MainFavComponent}
+  { path: 'mainFav', component: MainFavComponent},
+  { path: 'order', component: OrderComponent},
+  { path: 'join', component: JoinComponent }
 ];
 
 @NgModule({

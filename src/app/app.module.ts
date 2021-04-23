@@ -32,7 +32,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { OrderComponent } from './component/order/order.component';
 import { CartComponent } from './component/cart/cart.component';
 import { MainFavComponent} from './component/mainFavourite/mainFav.component';
-import { DailymenuComponent } from './component/dailymenu/dailymenu.component'
+import { DailymenuComponent } from './component/dailymenu/dailymenu.component';
+import {JoinComponent} from './component/join/join.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { DailymenuComponent } from './component/dailymenu/dailymenu.component'
     OrderComponent,
     CartComponent,
     MainFavComponent,
-    DailymenuComponent
+    DailymenuComponent,
+    JoinComponent
   ],
   imports: [
     FormsModule,

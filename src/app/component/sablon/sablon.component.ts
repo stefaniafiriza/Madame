@@ -88,6 +88,7 @@ export class StaffComponent implements OnInit {
   sendBook() {}
 
   openModal(open: boolean): void {
+    this.sampleIsOpen = false;
     this.mdlSampleIsOpen = open;
   }
   openModalNou(open: boolean): void {

@@ -85,9 +85,11 @@ export class MainFavComponent implements OnInit {
     this.router.navigate(['./contact']);
   }
   sendMenu(){
-    this.router.navigate(['../order']);
+    this.router.navigate(['../dailymenu']);
   }
-
+  sendCareer(){
+    this.router.navigate(['../join']);
+  }
   hideBarLink: boolean = false;
   logged: boolean =
     this.auth.isLogged == false

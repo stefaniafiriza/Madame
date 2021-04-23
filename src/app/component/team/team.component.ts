@@ -4,6 +4,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { database, firestore } from 'firebase';
 import { AuthService } from 'src/app/service/auth.service';
 import { Staff } from '../sablon/staff';
+
 @Component({
   selector: 'app-team',
   templateUrl: './team.component.html',
@@ -48,10 +49,10 @@ export class TeamComponent implements OnInit {
   }
 
   sendHome(){
-    this.router.navigate(['../home']);
+    this.router.navigate(['../']);
   }
   sendMenu(){
-    this.router.navigate(['../order']);
+    this.router.navigate(['../dailymenu']);
   }
   sendRegister () {
     this.router.navigate(['/register']);
@@ -62,6 +63,9 @@ export class TeamComponent implements OnInit {
   }
   sendFav(){
     this.router.navigate(['/mainFav']);
+  }
+  sendCareer(){
+    this.router.navigate(['./join']);
   }
   sendContact(){
     this.router.navigate(['./contact']);

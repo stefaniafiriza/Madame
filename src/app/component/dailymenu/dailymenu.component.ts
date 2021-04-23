@@ -49,6 +49,15 @@ export class DailymenuComponent implements OnInit {
   sendTeam() {
     this.router.navigate(['../team']);
   }
+  sendCareer(){
+    this.router.navigate(['../join']);
+  }
+  sendReview(){
+    this.router.navigate(['../review']);
+  }
+  sendFav(){
+    this.router.navigate(['../mainFav']);
+  }
 
   sendOnlineOrder() {
     this.router.navigate(['/order']);

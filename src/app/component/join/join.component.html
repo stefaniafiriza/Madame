@@ -1,0 +1,87 @@
+<body>
+    <div class="nav-bar">
+        <ul type="none">
+            <li><a (click)="sendHome()">Home</a></li>
+            <li><a><i class='fa fa-user-circle'></i>Profile</a></li>
+            <li><a (click)="sendTeam()">Team</a></li>
+            <li><a (click)="sendReview()">Reviews</a></li>
+            <li><a (click)="sendFav()">Favourite Food</a></li>
+            <li><a *ngIf="!hideBarLink" (click)="sendLogin()">Sign in</a></li>
+            <li><a *ngIf="!hideBarLink" (click)="sendRegister()">Sign up</a></li>
+        </ul>
+    </div>
+    <header class="masthead">
+      <div class="container h-100">
+          <div class="row h-100 align-items-center justify-content-center text-center">
+              <div class="col-lg-10 align-self-end">
+                  <h1 class="text-uppercase text-white font-weight-bold">WE ARE HIRING! COME AND JOIN OUR TEAM!!!</h1>
+                  <hr class="divider my-4" />
+              </div>
+              <div class="col-lg-8 align-self-baseline">
+                  <p class="text-white-75 font-weight-light mb-5">Are you an amazing chef? Do your friend come over to diner? Or maybe you are very good at food sales and marketing? However it would be, do you feel like our restaurant is the right place for you? Wait no more, we'll be pleased to get to know you and, why not, have you in our team!</p>
+                  <a class="btn btn-primary btn-xl js-scroll-trigger"(click)="openModal(true)" >Get Started!</a>
+              </div>
+          </div>
+      </div>
+  </header>
+
+
+
+
+</body>
+
+
+<div id="mdlSample" class="modal fade" role="dialog"
+  [ngStyle]="{'display': mdlSampleIsOpen ? 'block' : 'none', 'opacity': 1}">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Send us your details, your CV and a few words saying why are you the perfect match for us.</h4>
+      </div>
+      <div class="modal-body">
+        <form action="book()">
+            <br>     
+          
+            <div class="input-icons">
+                <i class="fa fa-user icon"></i>
+                <input class="log-reg" type="text" placeholder="Name" name="name" *ngIf="user !== null" [(ngModel)]="user.Name" required>
+                <input class="log-reg" type="text" placeholder="Name" name="name" *ngIf="user === null" [formControl]="name"  required>
+                
+            </div>
+            
+            <br>
+            <div class="input-icons">
+                <i class="fa fa-envelope icon"></i>
+                <input class="log-reg" type="text" [formControl]="mail" placeholder="Your email" name="mail"  required>
+            </div>
+         
+            <br>
+            <div class="input-icons">
+                <i class="fa fa-phone icon"></i>
+                <input class="log-reg" type="number" [formControl]="phone" pattern="[0-9]{10}" placeholder="Phone number" name="phone"  required>
+            </div>
+            <br>
+            <br>
+            <div class="input-icons">
+                <textarea [formControl]="coverText" class="log-reg" type="text" placeholder="Why should we hire you?" name="coverText"  required></textarea>
+            </div>
+            <br>
+            <div class="input-icons">
+                <input id="fileInput" type='file' (change)="onSelectFile($event)" accept=".pdf">
+       
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer" align="right">
+        
+        <button type="button" id="btnOK" class="btn btn-success" (click)="send()"><i
+            class="fa fa-check fa-fw"></i>Submit</button>
+         <button type="button" id="btnClose" class="btn btn-danger" (click)="openModal(false)"><i
+            class="fa fa-times fa-fw"></i> Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
