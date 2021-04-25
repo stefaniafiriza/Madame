@@ -7,6 +7,7 @@ import { getProducts } from '../order/getProductList';
 import { CartProduct } from 'src/app/models/cart-product';
 import { User } from '../../models/user';
 import { CookieService } from 'ngx-cookie-service';
+import { ProductService } from '../../service/product.service';
 
 @Component({
   selector: 'app-order',
@@ -30,7 +31,8 @@ export class OrderComponent implements OnInit {
   constructor(
     private auth: AuthService,
     private router: Router,
-    private cookie: CookieService
+    private cookie: CookieService,
+    public productService: ProductService
   ) { }
 
   ngOnInit(): void {
@@ -101,18 +103,9 @@ export class OrderComponent implements OnInit {
   sendContact() {
     this.router.navigate(['/contact']);
   }
-  sendFav() {
-    this.router.navigate(['/mainFav']);
-  }
 
   logout() {
     this.auth.logout();
-  }
-  sendCareer(){
-    this.router.navigate(['../join']);
-  }
-  sendTeam() {
-    this.router.navigate(['../team']);
   }
 
   hidePopupCart: boolean = false;
@@ -127,14 +120,14 @@ export class OrderComponent implements OnInit {
 
   productList: CartProduct[] = [];
   key: any = -1;
-  numberItems: number = 0;
+  // numberItems: number = 0;
  
   addProductCart(product: Product) {
       
     this.key = this.cart.findIndex(elem => elem.name == product.name);
     if (this.key != -1) {
       this.cart[this.key].quantity = this.cart[this.key].quantity + 1;
-      this.numberItems += 1;
+      this.productService.numberItems += 1;
       this.cart[this.key].price = this.cart[this.key].quantity * this.cart[this.key].price;
       this.auth.updateEmptyList();
       this.auth.updateProductList(this.cart);
@@ -144,7 +137,7 @@ export class OrderComponent implements OnInit {
         price: product.price,
         quantity: 1
       });
-      this.numberItems += 1;
+      this.productService.numberItems += 1;
       this.auth.updateProductList(this.productList);
     }
   

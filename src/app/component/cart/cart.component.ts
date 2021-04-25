@@ -5,8 +5,8 @@ import { AuthService } from '../../service/auth.service';
 import { Product } from '../../models/product';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { OrderComponent } from '../order/order.component';
 import { CookieService } from 'ngx-cookie-service';
+import { ProductService } from '../../service/product.service';
 
 @Component({
   selector: 'app-cart',
@@ -25,8 +25,8 @@ export class CartComponent implements OnInit {
     private auth: AuthService,
     private db: AngularFirestore,
     private router: Router,
-    private order: OrderComponent,
-    private cookie: CookieService
+    private cookie: CookieService,
+    private productService: ProductService
   ) { }
 
   ngOnInit(): void {
@@ -52,7 +52,7 @@ export class CartComponent implements OnInit {
   removeProduct(product: Product){
     this.cart.forEach((elem,index) => {
       if (elem.name == product.name) {
-        this.order.numberItems -= this.cart[index].quantity;
+        this.productService.numberItems -= this.cart[index].quantity;
         this.cart.splice(index,1);
       } 
     });
@@ -69,7 +69,7 @@ export class CartComponent implements OnInit {
         price = product.price/this.cart[this.key].quantity;
       }
       this.cart[this.key].quantity = this.cart[this.key].quantity + 1;
-      this.order.numberItems += 1;
+      this.productService.numberItems += 1;
       this.cart[this.key].price = this.cart[this.key].price + price;
       this.auth.updateEmptyList();
       this.auth.updateProductList(this.cart);
@@ -84,7 +84,7 @@ export class CartComponent implements OnInit {
         price = product.price/this.cart[this.key].quantity;
       }
       this.cart[this.key].quantity = this.cart[this.key].quantity - 1;
-      this.order.numberItems -= 1;
+      this.productService.numberItems -= 1;
       this.cart[this.key].price = this.cart[this.key].price - price;
       this.auth.updateEmptyList();
       this.auth.updateProductList(this.cart);
