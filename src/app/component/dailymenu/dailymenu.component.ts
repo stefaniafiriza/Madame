@@ -5,6 +5,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { getProducts } from '../order/getProductList';
 import { Product } from '../../models/product';
 import { firestore } from 'firebase';
+import { CartProduct } from 'src/app/models/cart-product';
+import { ProductService } from '../../service/product.service';
 
 @Component({
   selector: 'app-dailymenu',
@@ -22,7 +24,8 @@ export class DailymenuComponent implements OnInit {
   constructor(
     private router: Router,
     private auth: AuthService,
-    private cookie: CookieService
+    private cookie: CookieService,
+    public productService: ProductService
   ) { }
 
   ngOnInit(): void {
@@ -106,6 +109,34 @@ export class DailymenuComponent implements OnInit {
           document.getElementById("course" + contor).style.display="block"; 
         else
           document.getElementById("course" + contor).style.display="none"; 
+  }
+
+  productList: CartProduct[] = [];
+  key: any = -1;
+  cart: CartProduct[] = [];
+
+  addProductCart() {
+      
+    this.key = this.cart.findIndex(elem => elem.name == this.date + "");
+    if (this.key != -1) {
+      this.productService.numberItems += 1;
+      this.cart[this.key].quantity = this.cart[this.key].quantity + 1;
+      this.cart[this.key].price = this.cart[this.key].quantity * this.cart[this.key].price;
+      this.auth.updateEmptyList();
+      this.auth.updateProductList(this.cart);
+    } else {
+      this.productList.push({
+        name: "Daily Menu",
+        price: this.price,
+        quantity: 1
+      });
+      this.productService.numberItems += 1;
+      this.auth.updateProductList(this.productList);
+    }
+
+    alert("Daily menu was add to cart!");
+    this.router.navigate(['/order']);
+  
   }
 
 }
