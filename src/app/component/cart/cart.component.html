@@ -26,18 +26,41 @@
                 <ng-container *ngFor="let product of cart">
                     <tr>
                         <td>{{product.name}}</td>
-                        <td><i class="fa fa-minus" *ngIf="product.quantity > 1" (click)="removeOneProduct(product)"></i>{{product.quantity}}<i class="fa fa-plus" (click)="addOneProduct(product)"></i></td>
+                        <td><i class="fa fa-minus" *ngIf="product.quantity > 1"
+                                (click)="removeOneProduct(product)"></i>{{product.quantity}}<i class="fa fa-plus"
+                                (click)="addOneProduct(product)"></i></td>
                         <td>{{product.price | currency: 'EUR'}}</td>
                         <td>
-                            <button class="btnRemove" (click)=" removeProduct(product)"><i class="fa fa-trash" style="font-size:24px"></i></button>
+                            <button class="btnRemove" (click)=" removeProduct(product)"><i class="fa fa-trash"
+                                    style="font-size:24px"></i></button>
                         </td>
                     </tr>
                 </ng-container>
                 <tr style="background-color:white">
                     <td></td>
                     <td></td>
-                    <td><h3>Total: {{ totalPrice | currency: 'EUR'}}</h3></td>
+                    <td>
+                        <h3>Total: {{ productService.totalPrice | currency: 'EUR'}}</h3>
+                    </td>
                 </tr>
+                <tr style="background-color:white">
+                    <td>
+                        <label class="container">Pay cash
+                            <input type="radio" name="radio" id="payCash">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                    <td>
+                       or
+                    </td>
+                    <td>
+                        <label class="container">Pay with card
+                            <input type="radio" name="radio" id="payCart">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                </tr>
+
                 <tr style="background-color:white">
                     <td></td>
                     <td></td>

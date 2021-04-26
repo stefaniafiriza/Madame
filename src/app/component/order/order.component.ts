@@ -120,7 +120,6 @@ export class OrderComponent implements OnInit {
 
   productList: CartProduct[] = [];
   key: any = -1;
-  // numberItems: number = 0;
  
   addProductCart(product: Product) {
       

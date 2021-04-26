@@ -8,4 +8,5 @@ export class ProductService {
   constructor() { }
 
   public numberItems: number = 0;
+  public totalPrice: number = 0;
 }

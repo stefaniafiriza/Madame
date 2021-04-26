@@ -36,8 +36,8 @@ export class CartComponent implements OnInit {
           if (this.u.email === this.emailUser){
             this.currentUser = this.u;
             this.cart = this.u.products;
-            this.totalPrice = 0;
-            this.cart.forEach(elem => this.totalPrice = elem.price + this.totalPrice);
+            this.productService.totalPrice = 0;
+            this.cart.forEach(elem => this.productService.totalPrice = elem.price + this.productService.totalPrice);
           }
         }
       }
@@ -91,13 +91,31 @@ export class CartComponent implements OnInit {
     }
   }
 
+  payCard: string;
+  payCash: string;
+
   sendOrder() {
-    this.insertOrderData();
-    this.router.navigate(['home']);
-    alert('Your order will be delivered in the shortest time!');
+    var payCard = document.getElementById("payCart") as HTMLInputElement;  
+    var payCash = document.getElementById("payCash") as HTMLInputElement;
+
+    if (payCash.checked  == true) {
+      this.payCash = "Pay cash";
+      this.productService.numberItems = 0;
+      this.insertOrderData(this.payCash);
+      this.router.navigate(['home']);
+      alert('Your order will be delivered in the shortest time!');
+    } else {
+      if (payCard.checked == true) {
+        this.payCard = "Pay with card";
+        this.productService.numberItems = 0;
+        this.insertOrderData(this.payCard);
+        this.router.navigate(['card-pay']);
+      }
+    }
+    
   }
 
-  insertOrderData() {
+  insertOrderData(payment) {
     this.auth.updateEmptyList();
     const id = this.db.createId();
     this.db.doc(`orders/${id}`).set({
@@ -106,7 +124,8 @@ export class CartComponent implements OnInit {
       email: this.currentUser.email,
       phone: this.currentUser.phone,
       products: this.currentUser.products,
-      totalPrice: this.totalPrice
+      totalPrice: this.productService.totalPrice,
+      payment: payment
     });
   }
 

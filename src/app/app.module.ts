@@ -34,6 +34,7 @@ import { CartComponent } from './component/cart/cart.component';
 import { MainFavComponent} from './component/mainFavourite/mainFav.component';
 import { DailymenuComponent } from './component/dailymenu/dailymenu.component';
 import {JoinComponent} from './component/join/join.component';
+import { CardPayComponent } from './component/card-pay/card-pay.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import {JoinComponent} from './component/join/join.component';
     CartComponent,
     MainFavComponent,
     DailymenuComponent,
-    JoinComponent
+    JoinComponent,
+    CardPayComponent
   ],
   imports: [
     FormsModule,
