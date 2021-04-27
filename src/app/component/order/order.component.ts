@@ -131,13 +131,23 @@ export class OrderComponent implements OnInit {
       this.auth.updateEmptyList();
       this.auth.updateProductList(this.cart);
     } else {
-      this.productList.push({
-        name: product.name,
-        price: product.price,
-        quantity: 1
-      });
-      this.productService.numberItems += 1;
-      this.auth.updateProductList(this.productList);
+      if (this.cart.length != 0) {
+        this.cart.push({
+          name: product.name,
+          price: product.price,
+          quantity: 1
+        });
+        this.productService.numberItems += 1;
+        this.auth.updateProductList(this.cart);
+      } else {
+        this.productList.push({
+          name: product.name,
+          price: product.price,
+          quantity: 1
+        });
+        this.productService.numberItems += 1;
+        this.auth.updateProductList(this.productList);
+      }     
     }
   
   }

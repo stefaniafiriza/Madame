@@ -88,6 +88,7 @@ hr {
     -webkit-margin-top-collapse: 95px;
     width: 80%;
     margin-left: 8%;
+    clear: both;
 }
 
 #course1 {
