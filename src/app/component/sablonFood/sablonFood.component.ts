@@ -6,6 +6,7 @@ import { database, firestore } from 'firebase';
 import { AuthService } from 'src/app/service/auth.service';
 import { FormControl } from '@angular/forms';
 import { Food } from './food';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'fav-food',
@@ -16,6 +17,7 @@ import { Food } from './food';
 })
 export class FavFoodComponent implements OnInit {
 
+  
   prodList: FavFood[]=[]
     @Input() favFood: FavFood
   mdlSampleIsOpen : boolean = false;
@@ -24,11 +26,15 @@ export class FavFoodComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private auth: AuthService
+    private auth: AuthService,
+    private cookie: CookieService
   ) {}
 
   ngOnInit(): void {
- 
+    if (this.cookie.get('usernameCookie').length != 0) {
+      this.auth.isLogged = true;
+      this.hideBarLink = true;
+    }
   }
 
   vote(i: number)

@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/service/auth.service';
 import { CommonModule } from '@angular/common'
 import { Review } from './review';
 import { firestore } from 'firebase';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-review',
   templateUrl: './review.component.html',
@@ -22,10 +23,15 @@ export class ReviewComponent implements OnInit {
   
   constructor(
     private router: Router,
-    private auth: AuthService
+    private auth: AuthService,
+    private cookie: CookieService
   ) { }
 
   ngOnInit(): void {
+    if (this.cookie.get('usernameCookie').length != 0) {
+      this.auth.isLogged = true;
+      this.hideBarLink = true;
+    }
     firestore().collection('site').doc('reviews').get().then( (snapshot) => {
       this.snapshotToReviewArray(snapshot.data());
     })

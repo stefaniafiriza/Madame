@@ -89,10 +89,13 @@ export class StaffComponent implements OnInit {
 
   openModal(open: boolean): void {
     this.sampleIsOpen = false;
+    this.ampleIsOpen=false;
     this.mdlSampleIsOpen = open;
   }
   openModalNou(open: boolean): void {
     this.sampleIsOpen = open;
+    this.ampleIsOpen = false;
+    this.mdlSampleIsOpen = false;
   }
   openModalVote(open: boolean): void {
     this.ampleIsOpen = open;

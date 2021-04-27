@@ -4,6 +4,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { database, firestore } from 'firebase';
 import { AuthService } from 'src/app/service/auth.service';
 import { Staff } from '../sablon/staff';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-team',
@@ -20,11 +21,17 @@ export class TeamComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private auth: AuthService
+    private auth: AuthService,
+    private cookie: CookieService
+
   ) {  }
 
 
   ngOnInit(): void {
+    if (this.cookie.get('usernameCookie').length != 0) {
+      this.auth.isLogged = true;
+      this.hideBarLink = true;
+    }
     firestore().collection('site').doc('chefs').get().then( (snapshot) => {
       this.snapshotToStaffArray(snapshot.data());
     })

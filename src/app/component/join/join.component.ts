@@ -41,7 +41,10 @@ export class JoinComponent implements OnInit {
   ){ }
 
   ngOnInit(): void {
-  
+    if (this.cookie.get('usernameCookie').length != 0) {
+      this.auth.isLogged = true;
+      this.hideBarLink = true;
+    }
   }
 
  

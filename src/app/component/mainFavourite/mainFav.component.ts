@@ -8,6 +8,7 @@ import { database, firestore } from 'firebase';
 import { AuthService } from 'src/app/service/auth.service';
 import { FavFood } from '../sablonFood/favFood';
 import { elementAt } from 'rxjs/operators';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-favourites',
   templateUrl: './mainFav.component.html',
@@ -21,9 +22,16 @@ export class MainFavComponent implements OnInit {
 
   databaseRef: database.Reference;
 
-  constructor(private router: Router, private auth: AuthService) {}
+  constructor(
+    private router: Router, 
+    private auth: AuthService,
+    private cookie: CookieService) {}
 
   ngOnInit(): void {
+    if (this.cookie.get('usernameCookie').length != 0) {
+      this.auth.isLogged = true;
+      this.hideBarLink = true;
+    }
     this.populate('drink')
   }
 

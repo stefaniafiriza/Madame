@@ -10,6 +10,7 @@ import { AuthService } from '../../service/auth.service';
 import { Review } from '../review/review';
 import { v4 as uuid } from 'uuid';
 import { FormControl } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-review',
@@ -29,10 +30,15 @@ export class RevFormComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private auth:AuthService) 
+    private auth:AuthService,    
+    private cookie: CookieService
+    ) 
   {}
   ngOnInit(): void {
-    
+    if (this.cookie.get('usernameCookie').length != 0) {
+      this.auth.isLogged = true;
+      this.hideBarLink = true;
+    }
   }
 
   review() {
