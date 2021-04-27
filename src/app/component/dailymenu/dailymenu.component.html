@@ -68,7 +68,7 @@
                         <p class="product_description"> {{gaskets[1].description}}</p>
                     </td>
                 </tr>
-                <tr style="height: 50px; width: 100%;">
+                <tr style="height: 50px; width: 100%;" *ngIf="hideBarLink" >
                     <td colspan="2"><button class="put_in_cart" (click)="addProductCart()"><i class="fa fa-shopping-basket"></i></button></td>
                     <td></td>
                 </tr>
@@ -110,8 +110,8 @@
                         <p class="product_description"> {{gaskets[2].description}}</p>
                     </td>
                 </tr>
-                <tr style="height: 50px; width: 100%;">
-                    <td colspan="2"><button class="put_in_cart"><i class="fa fa-shopping-basket"></i></button></td>
+                <tr style="height: 50px; width: 100%;" *ngIf="hideBarLink" >
+                    <td colspan="2"><button class="put_in_cart" (click)="addProductCart()"><i class="fa fa-shopping-basket"></i></button></td>
                     <td></td>
                 </tr>
             </ng-container>
@@ -152,8 +152,8 @@
                         <p class="product_description"> {{gaskets[2].description}}</p>
                     </td>
                 </tr>
-                <tr style="height: 50px; width: 100%;">
-                    <td colspan="2"><button class="put_in_cart"><i class="fa fa-shopping-basket"></i></button></td>
+                <tr style="height: 50px; width: 100%;"  *ngIf="hideBarLink" >
+                    <td colspan="2"><button class="put_in_cart" (click)="addProductCart()"><i class="fa fa-shopping-basket"></i></button></td>
                     <td></td>
                 </tr>
             </ng-container>
@@ -194,8 +194,8 @@
                         <p class="product_description"> {{gaskets[0].description}}</p>
                     </td>
                 </tr>
-                <tr style="height: 50px; width: 100%;">
-                    <td colspan="2"><button class="put_in_cart"><i class="fa fa-shopping-basket"></i></button></td>
+                <tr style="height: 50px; width: 100%;" *ngIf="hideBarLink" >
+                    <td colspan="2"><button class="put_in_cart"(click)="addProductCart()"><i class="fa fa-shopping-basket"></i></button></td>
                     <td></td>
                 </tr>
             </ng-container>
@@ -234,15 +234,12 @@
                         <p class="product_description"> {{gaskets[1].description}}</p>
                     </td>
                 </tr>
-                <tr style="height: 50px; width: 100%;">
-                    <td colspan="2"><button class="put_in_cart"><i class="fa fa-shopping-basket"></i></button></td>
+                <tr style="height: 50px; width: 100%;" *ngIf="hideBarLink">
+                    <td colspan="2"><button class="put_in_cart" (click)="addProductCart()"><i class="fa fa-shopping-basket"></i></button></td>
                     <td></td>
                 </tr>
             </ng-container>
         </table>
     </div>
-
-
-    <!-- <app-cart *ngIf="hidePopupCart" (close)="closeCart()"></app-cart> -->
 
 </div>

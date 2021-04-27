@@ -37,6 +37,10 @@
     height: 100%;
     background-repeat: no-repeat;
     position: absolute;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -moz-background-size: cover;
 }
 
 .container h1{
