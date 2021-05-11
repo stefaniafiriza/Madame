@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../models/user';
 import {
@@ -41,7 +41,7 @@ export class RevFormComponent implements OnInit {
     }
   }
 
-  review() {
+  async review(shouldRedirect = true) {
     let rev: Review = {
       name: this.user !== null ? this.user.Name : this.name.value,
       review: this.reviewText.value,
@@ -56,11 +56,22 @@ export class RevFormComponent implements OnInit {
 
     delete update[rev.id].id;
 
-    firestore().collection('site').doc('reviews').update(update).finally(() => {
-      this.sendReview()
-    })
+    await firestore().collection('site').doc('reviews').update(update)
     
+    if(shouldRedirect)
+    {
+      this.sendReview()
+    }
+    return update
   }
+
+  async removeReview(id: string){
+
+    const update: any = {};
+    update[id] = firestore.FieldValue.delete()
+    await firestore().collection('site').doc('reviews').update(update);
+  }
+
   sendReview() {
     this.router.navigate(['./review']);
   }
