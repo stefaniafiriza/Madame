@@ -13,7 +13,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class ContactFormComponent implements OnInit {
 
   FormData: FormGroup;
-
+  text = 'Send Us A Message';
   constructor(
     private builder: FormBuilder,
     private angularFire: AngularFireDatabase,
